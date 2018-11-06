@@ -1,0 +1,27 @@
+@import './styles/_colors.scss';
+@import './styles/variables.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a,
+.link {
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-link-hover;
+  }
+}
+
+.active-link {
+  color: $color-link;
+  background-color: $color-link-active;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
