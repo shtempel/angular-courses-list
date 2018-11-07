@@ -3,7 +3,11 @@
         <h2>Logo</h2>
     </div>
     <div class="header__controls">
-        <span class="header__controls__login btn">{{titles.login}}</span>
-        <span class="header__controls__logout btn">{{titles.logout}}</span>
+        <span class="btn header__controls__login" [ngClass]="{'disabled': authStatus}"
+              (click)="onLogin()">{{titles.login}}
+        </span>
+        <span class="btn header__controls__logout" [ngClass]="{'disabled': !authStatus}"
+              (click)="onLogout()">{{titles.logout}}
+        </span>
     </div>
 </div>

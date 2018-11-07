@@ -1,4 +1,6 @@
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserModule } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 
 import { CourseItemComponent } from './components/courses-list/course-item/course-item.component';
@@ -10,6 +12,8 @@ import { ToolPanelComponent } from './components/tool-panel/tool-panel.component
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AppComponent } from './app.component';
+
+import { reducers } from '../store';
 
 @NgModule({
     declarations: [
@@ -24,7 +28,11 @@ import { AppComponent } from './app.component';
         AppComponent,
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        StoreModule.forRoot(reducers),
+        StoreDevtoolsModule.instrument({
+            maxAge: 5
+        }),
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -31,3 +31,8 @@ body {
   color: $_color-white;
   outline: none;
 }
+
+.disabled {
+  color: $_color-Gray;
+  pointer-events: none;
+}
