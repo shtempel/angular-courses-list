@@ -1,23 +1,23 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { buttonsNames } from '../../../../constants/_const';
 import { ICourseItem } from 'src/app/models/course-item';
-import { common } from './../../../../constants/_const';
 
 @Component({
-  selector: 'app-course-item',
-  templateUrl: './course-item.component.html',
-  styleUrls: ['./course-item.component.scss']
+    selector: 'app-course-item',
+    templateUrl: './course-item.component.html',
+    styleUrls: ['./course-item.component.scss']
 })
 export class CourseItemComponent implements OnInit {
-  @Input() public courseItem: ICourseItem;
-  buttonsNames = {
-    delete: common.DELETE,
-    edit: common.EDIT
-  };
-  constructor() {
-  }
+    @Input() public courseItem: ICourseItem;
+    buttonsNames = {
+        delete: buttonsNames.DELETE,
+        edit: buttonsNames.EDIT
+    };
 
-  ngOnInit() {
-  }
+    constructor() {
+    }
 
+    ngOnInit() {
+    }
 }

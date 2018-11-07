@@ -1,0 +1,25 @@
+@import './../../../styles/variables';
+
+.tool-panel {
+  padding: 0 $padding-base $padding-base;
+  &__search {
+    margin-bottom: $margin-small-vertical;
+    justify-content: space-between;
+    &__search-input {
+      margin-right: $margin-base-horizontal;
+      padding: $padding-small;
+      border: $border-base;
+      flex: 1;
+    }
+    &__search-btn {
+      padding: $padding-small;
+      border: $border-base;
+    }
+  }
+  &__add-new {
+    &__add-new-btn {
+      padding: $padding-small;
+      border: $border-base;
+    }
+  }
+}

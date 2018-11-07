@@ -1,18 +1,13 @@
 //names from http://chir.ag/projects/name-that-color/
 
 /* private variables */;
-$_color-black:                  #000000;
-$_color-white:                  #FFFFFF;
+$_color-Havelock-Blue:          #617BDB;
+$_color-Duneapprox:             #2F2C28;
 $_color-la-palma:               #18AA18;
 $_color-Loblolly:               #B4B9C0;
-$_color-Duneapprox:             #2F2C28;
-$_color-Havelock-Blue:          #617BDB;
+$_color-black:                  #000000;
+$_color-white:                  #FFFFFF;
 $_color-Gray:                   #808080;
 
-/* Link */
-$color-link:                    $_color-white;
-$color-link_hover:              $_color-white;
-$color-link_active:             $_color-Duneapprox;
-
 /*Other*/
-$color-table-border:            $_color-Gray;
+$color-border:                  $_color-Gray;

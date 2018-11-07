@@ -1,0 +1,7 @@
+@import './../../../styles/variables';
+
+.list {
+  height: $container-height;
+  padding: $padding-base;
+  overflow: auto;
+}

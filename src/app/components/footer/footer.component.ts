@@ -1,19 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import {common} from './../../../constants/_const';
+import { common } from '../../../constants/_const';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+    selector: 'app-footer',
+    templateUrl: './footer.component.html',
+    styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  footerText = common.COPYRIGHT;
+    footerText = common.COPYRIGHT;
 
-  constructor() {
-  }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
-
+    ngOnInit() {
+    }
 }

@@ -1,14 +1,25 @@
+@import './_colors';
+
 /* Padding */
-$padding-small:                         .4rem !default;
-$padding-base:                          .8rem !default;
+$padding-small:                         .4rem;
+$padding-base:                          .8rem;
 
 /*Logo size*/
 $logo_width:                            100px;
 $logo_height:                           50px;
 
 /*Margin*/
-$margin-base-horizontal:                1.2rem !default;
-$margin-base-vertical:                  2rem !default;
+$margin-base-horizontal:                1.2rem;
+$margin-base-vertical:                  1.2rem;
+$margin-small-vertical:                 1rem;
 
-/*Fonts*/
+  /*Fonts*/
 $cell-font-size:                        smaller;
+
+/*Border*/
+$border-base:                           1px solid $color-border;
+
+/*Common*/
+$header-height:                         50px;
+$description-height:                    20px;
+$container-height:                      600px;

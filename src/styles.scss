@@ -1,27 +1,33 @@
-@import './styles/_colors.scss';
 @import './styles/variables.scss';
+@import './styles/_colors.scss';
 
 body {
+  padding: $padding-base;
   margin: 0;
-  padding: 0;
-}
-
-a,
-.link {
-  text-decoration: none;
-  cursor: pointer;
-
-  &:hover {
-    color: $color-link-hover;
-  }
-}
-
-.active-link {
-  color: $color-link;
-  background-color: $color-link-active;
 }
 
 * {
   box-sizing: border-box;
+  outline: none;
+}
+
+.column {
+  flex-direction: column;
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+  display: flex;
+}
+
+.btn {
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: $_color-Gray;
+  color: $_color-white;
   outline: none;
 }

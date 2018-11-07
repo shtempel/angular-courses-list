@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 
-import { common } from './../../../constants/_const';
+import { buttonsNames } from '../../../constants/_const';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  titles = {
-    login: common.USER_LOGIN,
-    logout: common.USER_LOGOFF
-  };
+    titles = {
+        login: buttonsNames.USER_LOGIN,
+        logout: buttonsNames.USER_LOGOFF
+    };
 
-  constructor() {
-  }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
-
+    ngOnInit() {
+    }
 }

@@ -1,26 +1,16 @@
-<!-- <div class="course-item">
-  <div class="course-item__left">
-    <div class="course-item__header">
-      <span>{{courseItem.name}}</span>
-      <div>
-        <span>{{courseItem.duration}}</span>
-        <span>{{courseItem.date}}</span>
-      </div>
+<div class="course-item column">
+    <div class="course-item__main row">
+        <div class="course-item__main__short row">
+            <span>{{courseItem.name}}</span>
+            <div>
+                <span>{{courseItem.duration}}</span>
+                <span>{{courseItem.date}}</span>
+            </div>
+        </div>
     </div>
-    <div class="course-item__description">
-      <span>{{courseItem.description}}</span>
+    <span class="course-item__main__description">{{courseItem.description}}</span>
+    <div class="course-item__buttons row">
+        <span class="course-item__buttons__edit btn">{{buttonsNames.edit}}</span>
+        <span class="course-item__buttons__del btn">{{buttonsNames.delete}}</span>
     </div>
-  </div>
-  <div class="course-item__buttons">
-    <app-button buttonTitle={{buttonsNames.edit}}></app-button>
-    <app-button buttonTitle={{buttonsNames.delete}}></app-button>
-  </div>
-</div> -->
-
-<div class="course-item">
-  <div class="course-item__left"></div>
-  <div class="course-item__right">
-    <span class="course-item__right__btn">{{buttonsNames.edit}}</span>
-    <span class="course-item__right__btn">{{buttonsNames.delete}}</span>
-  </div>
 </div>

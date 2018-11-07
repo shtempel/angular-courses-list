@@ -1,12 +1,19 @@
+@import './../../../styles/variables.scss';
+@import './../../../styles/_colors.scss';
+
 .header {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  border-bottom: $border-base;
+  padding: $padding-base;
+  height: $header-height;
   align-items: center;
-  height: 50px;
-  &__login {
+  &__logo {
 
   }
-  &__login {
+  &__controls {
+    &__login,
+    &__logout {
+      padding: $padding-small;
+    }
   }
 }
