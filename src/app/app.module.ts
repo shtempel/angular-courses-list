@@ -1,5 +1,6 @@
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 
@@ -13,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AppComponent } from './app.component';
 
+import { ROUTES } from './app.routes';
 import { reducers } from '../store';
 
 @NgModule({
@@ -29,6 +31,7 @@ import { reducers } from '../store';
     ],
     imports: [
         BrowserModule,
+        RouterModule.forRoot(ROUTES),
         StoreModule.forRoot(reducers),
         StoreDevtoolsModule.instrument({
             maxAge: 5

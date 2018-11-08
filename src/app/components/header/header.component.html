@@ -4,10 +4,12 @@
     </div>
     <div class="header__controls">
         <span class="btn header__controls__login" [ngClass]="{'disabled': authStatus}"
-              (click)="onLogin()">{{titles.login}}
+              (click)="onLogin()">
+            {{titles.login}}
         </span>
         <span class="btn header__controls__logout" [ngClass]="{'disabled': !authStatus}"
-              (click)="onLogout()">{{titles.logout}}
+              (click)="onLogout()">
+            {{titles.logout}}
         </span>
     </div>
 </div>

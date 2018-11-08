@@ -33,6 +33,7 @@ body {
 }
 
 .disabled {
-  color: $_color-Gray;
+  border: none !important;
   pointer-events: none;
+  color: $_color-Gray;
 }

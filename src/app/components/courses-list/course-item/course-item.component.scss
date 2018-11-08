@@ -10,13 +10,18 @@
       justify-content: space-between;
       padding: $padding-small;
       width: 100%;
-    }
-    &__description {
-      height: $description-height;
-      padding: 0 $padding-small;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
+      &__duration-year {
+        justify-content: space-between;
+        display: flex;
+        width: $duration-year-width;
+      }
+      &__description {
+        height: $description-height-small;
+        padding: 0 $padding-small;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
     }
   }
   &__buttons {
@@ -34,6 +39,53 @@
       background-color: $_color-Gray;
       color: $_color-white;
       outline: none;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .course-item {
+    flex-direction: row;
+    &__main {
+      width: 100%;
+      &__short {
+        &__duration-year {
+          width: $duration-year-width;
+        }
+        &__description {
+          height: $description-height-medium;
+          padding: 0 $padding-small;
+          text-overflow: ellipsis;
+          white-space: pre-line;
+          overflow: auto;
+        }
+      }
+    }
+    &__buttons {
+      justify-content: space-around;
+      padding: $padding-small;
+      border-top-style: none;
+      flex-direction: column;
+      width: 20%;
+      &__edit,
+      &__del {
+        padding: $padding-small;
+        border: $border-base;
+      }
+      &__edit:hover,
+      &__del:hover {
+        background-color: $_color-Gray;
+        color: $_color-white;
+        outline: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 993px) {
+  .course-item {
+    &__buttons {
+      width: 10%;
     }
   }
 }

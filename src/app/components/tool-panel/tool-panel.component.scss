@@ -23,3 +23,14 @@
     }
   }
 }
+
+@media (min-width: 481px) {
+  .tool-panel {
+    justify-content: space-between;
+    flex-direction: row;
+    &__search {
+      margin-right: $margin-base-horizontal;
+      width: 70%;
+    }
+  }
+}
