@@ -1,9 +1,14 @@
 <div class="tool-panel column">
     <div class="tool-panel__search row">
-        <input class="tool-panel__search__search-input" type="text" placeholder="{{inputPlaceHolder}}">
-        <span class="tool-panel__search__search-btn btn">{{searchBtnTitle}}</span>
+        <input class="tool-panel__search__search-input" type="text" placeholder="{{assets.inputPlaceHolder}}">
+        <span class="tool-panel__search__search-btn btn">{{assets.searchBtnTitle}}
+            <app-icon [className]="icons.className" [iconType]="icons.searchIcon"></app-icon>
+        </span>
     </div>
     <div class="tool-panel__add-new">
-        <div class="tool-panel__add-new__add-new-btn btn">{{addBtnTitle}}</div>
+        <div class="tool-panel__add-new__add-new-btn btn">
+            <app-icon class="icon" [iconType]="icons.newIcon"></app-icon>
+            {{assets.addBtnTitle}}
+        </div>
     </div>
 </div>

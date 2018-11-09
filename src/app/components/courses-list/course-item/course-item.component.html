@@ -9,9 +9,12 @@
         </div>
         <span class="course-item__main__short__description">{{courseItem.description}}</span>
     </div>
-
     <div class="course-item__buttons row">
-        <span class="course-item__buttons__edit btn">{{buttonsNames.edit}}</span>
-        <span class="course-item__buttons__del btn">{{buttonsNames.delete}}</span>
+        <span class="course-item__buttons__edit btn">{{buttonsNames.edit}}
+            <app-icon [className]="icons.className" [iconType]="icons.editIcon"></app-icon>
+        </span>
+        <span class="course-item__buttons__del btn">{{buttonsNames.delete}}
+            <app-icon [className]="icons.className" [iconType]="icons.trashIcon"></app-icon>
+        </span>
     </div>
 </div>

@@ -5,6 +5,7 @@
   margin-bottom: $margin-base-vertical;
   justify-content: space-between;
   border: $border-base;
+  box-shadow: $shadow;
   &__main {
     &__short {
       justify-content: space-between;
@@ -32,6 +33,7 @@
       width: 100%;
     }
     &__edit {
+
       border-right: $border-base;
     }
     &__edit:hover,
@@ -85,7 +87,7 @@
 @media (min-width: 993px) {
   .course-item {
     &__buttons {
-      width: 10%;
+      width: 15%;
     }
   }
 }

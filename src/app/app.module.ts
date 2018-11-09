@@ -1,3 +1,4 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -12,10 +13,12 @@ import { CoursesPageComponent } from './pages/courses-page/courses-page.componen
 import { ToolPanelComponent } from './components/tool-panel/tool-panel.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { IconComponent } from './components/icon/icon.component';
 import { AppComponent } from './app.component';
 
 import { ROUTES } from './app.routes';
 import { reducers } from '../store';
+
 
 @NgModule({
     declarations: [
@@ -27,10 +30,12 @@ import { reducers } from '../store';
         LoadMoreComponent,
         HeaderComponent,
         FooterComponent,
-        AppComponent,
+        IconComponent,
+        AppComponent
     ],
     imports: [
         BrowserModule,
+        FontAwesomeModule,
         RouterModule.forRoot(ROUTES),
         StoreModule.forRoot(reducers),
         StoreDevtoolsModule.instrument({

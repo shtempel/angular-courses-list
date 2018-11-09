@@ -2,6 +2,7 @@
 
 .tool-panel {
   padding: 0 $padding-base $padding-base;
+  box-shadow: $shadow;
   &__search {
     margin-bottom: $margin-small-vertical;
     justify-content: space-between;

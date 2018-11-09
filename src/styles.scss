@@ -6,6 +6,17 @@ body {
   margin: 0;
 }
 
+@media (min-width: 1000px) {
+  body {
+    max-width: 1000px;
+  }
+  html {
+    justify-content: space-around;
+    flex-direction: row;
+    display: flex;
+  }
+}
+
 * {
   box-sizing: border-box;
   outline: none;
@@ -30,10 +41,17 @@ body {
   background-color: $_color-Gray;
   color: $_color-white;
   outline: none;
+  .icon {
+    color: $_color-white;
+  }
 }
 
 .disabled {
   border: none !important;
   pointer-events: none;
+  color: $_color-Gray;
+}
+
+.icon {
   color: $_color-Gray;
 }

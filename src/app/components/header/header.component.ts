@@ -12,7 +12,7 @@ import { App } from '../../models/app';
 })
 export class HeaderComponent implements OnInit {
     authStatus;
-    titles = {
+    assets = {
         login: buttonsNames.USER_LOGIN,
         logout: buttonsNames.USER_LOGOFF
     };
