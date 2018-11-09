@@ -1,3 +1,4 @@
+import { faFileAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Component, OnInit } from '@angular/core';
 
 import { buttonsNames, common } from '../../../constants/_const';
@@ -8,9 +9,16 @@ import { buttonsNames, common } from '../../../constants/_const';
     styleUrls: ['./tool-panel.component.scss']
 })
 export class ToolPanelComponent implements OnInit {
-    addBtnTitle = buttonsNames.ADD_COURSE;
-    searchBtnTitle = buttonsNames.SEARCH;
-    inputPlaceHolder = common.SEARCH_PLACE_HOLDER;
+    icons = {
+        newIcon: faFileAlt,
+        searchIcon: faSearch,
+        className: 'icon'
+    };
+    assets = {
+        addBtnTitle: buttonsNames.ADD_COURSE,
+        searchBtnTitle: buttonsNames.SEARCH,
+        inputPlaceHolder: common.SEARCH_PLACE_HOLDER
+    };
 
     constructor() {
     }

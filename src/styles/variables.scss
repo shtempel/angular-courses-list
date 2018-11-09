@@ -5,21 +5,28 @@ $padding-small:                         .4rem;
 $padding-base:                          .8rem;
 
 /*Logo size*/
-$logo_width:                            100px;
 $logo_height:                           50px;
+$logo_width:                            100px;
 
 /*Margin*/
 $margin-base-horizontal:                1.2rem;
-$margin-base-vertical:                  1.2rem;
 $margin-small-vertical:                 1rem;
+$margin-base-vertical:                  1.2rem;
 
   /*Fonts*/
 $cell-font-size:                        smaller;
 
 /*Border*/
 $border-base:                           1px solid $color-border;
+$border-outer:                          2px solid $color-border;
 
 /*Common*/
-$header-height:                         50px;
-$description-height:                    20px;
+$description-height-medium:             60px;
+$description-height-small:              20px;
+$duration-year-width:                   130px;
 $container-height:                      600px;
+$body-max-width:                        1000px;
+$header-height:                         50px;
+$footer-shadow:                         0 0 5px rgba(0, 0, 0, 0.5);
+$shadow:                                2px 5px 10px rgba(0, 0, 0, 0.5);
+
