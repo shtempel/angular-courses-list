@@ -2,6 +2,7 @@
 
 .tool-panel {
   padding: 0 $padding-base $padding-base;
+  box-shadow: $shadow;
   &__search {
     margin-bottom: $margin-small-vertical;
     justify-content: space-between;
@@ -20,6 +21,17 @@
     &__add-new-btn {
       padding: $padding-small;
       border: $border-base;
+    }
+  }
+}
+
+@media (min-width: 481px) {
+  .tool-panel {
+    justify-content: space-between;
+    flex-direction: row;
+    &__search {
+      margin-right: $margin-base-horizontal;
+      width: 70%;
     }
   }
 }

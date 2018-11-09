@@ -1,7 +1,7 @@
 @import './../../../styles/variables';
 
 .footer {
+  box-shadow: $footer-shadow;
   justify-content: flex-end;
-  border-top: $border-base;
   padding: $padding-base;
 }

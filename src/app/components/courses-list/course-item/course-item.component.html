@@ -1,16 +1,20 @@
 <div class="course-item column">
-    <div class="course-item__main row">
+    <div class="course-item__main column">
         <div class="course-item__main__short row">
             <span>{{courseItem.name}}</span>
-            <div>
+            <div class="course-item__main__short__duration-year">
                 <span>{{courseItem.duration}}</span>
                 <span>{{courseItem.date}}</span>
             </div>
         </div>
+        <span class="course-item__main__short__description">{{courseItem.description}}</span>
     </div>
-    <span class="course-item__main__description">{{courseItem.description}}</span>
     <div class="course-item__buttons row">
-        <span class="course-item__buttons__edit btn">{{buttonsNames.edit}}</span>
-        <span class="course-item__buttons__del btn">{{buttonsNames.delete}}</span>
+        <span class="course-item__buttons__edit btn">{{buttonsNames.edit}}
+            <app-icon [className]="icons.className" [iconType]="icons.editIcon"></app-icon>
+        </span>
+        <span class="course-item__buttons__del btn">{{buttonsNames.delete}}
+            <app-icon [className]="icons.className" [iconType]="icons.trashIcon"></app-icon>
+        </span>
     </div>
 </div>
