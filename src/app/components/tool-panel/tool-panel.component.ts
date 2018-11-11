@@ -1,7 +1,7 @@
-import { faFileAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Component, OnInit } from '@angular/core';
+import {faFileAlt, faSearch} from '@fortawesome/free-solid-svg-icons';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
-import { buttonsNames, common } from '../../../constants/_const';
+import {buttonsNames, common} from '../../../constants/_const';
 
 @Component({
     selector: 'app-tool-panel',
@@ -9,20 +9,30 @@ import { buttonsNames, common } from '../../../constants/_const';
     styleUrls: ['./tool-panel.component.scss']
 })
 export class ToolPanelComponent implements OnInit {
+    inputValue;
+    @Output() click: EventEmitter<string> = new EventEmitter<string>();
     icons = {
-        newIcon: faFileAlt,
         searchIcon: faSearch,
+        newIcon: faFileAlt,
         className: 'icon'
     };
     assets = {
+        inputPlaceHolder: common.SEARCH_PLACE_HOLDER,
         addBtnTitle: buttonsNames.ADD_COURSE,
-        searchBtnTitle: buttonsNames.SEARCH,
-        inputPlaceHolder: common.SEARCH_PLACE_HOLDER
+        searchBtnTitle: buttonsNames.SEARCH
     };
 
     constructor() {
     }
 
     ngOnInit() {
+    }
+
+    onKeyUp(event: any) {
+        this.inputValue = event.target.value;
+    }
+
+    onSearchClick() {
+        !this.inputValue ? console.log('You should type something in input first') : console.log(this.inputValue);
     }
 }

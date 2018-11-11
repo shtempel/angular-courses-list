@@ -1,30 +1,36 @@
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
-import { NgModule } from '@angular/core';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {BrowserModule} from '@angular/platform-browser';
+import {RouterModule} from '@angular/router';
+import {StoreModule} from '@ngrx/store';
+import {NgModule} from '@angular/core';
 
-import { CourseItemComponent } from './components/courses-list/course-item/course-item.component';
-import { LoadMoreComponent } from './components/courses-list/load-more/load-more.component';
-import { CoursesListComponent } from './components/courses-list/courses-list.component';
-import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
-import { CoursesPageComponent } from './pages/courses-page/courses-page.component';
-import { ToolPanelComponent } from './components/tool-panel/tool-panel.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { IconComponent } from './components/icon/icon.component';
-import { AppComponent } from './app.component';
+import {NotFoundPageComponent, CoursesPageComponent, AddNewPageComponent, LoginPageComponent, EditCoursePageComponent} from './pages';
+import {AppComponent} from './app.component';
+import {
+    BreadcrumbsComponent,
+    CoursesListComponent,
+    CourseItemComponent,
+    ToolPanelComponent,
+    LoadMoreComponent,
+    FooterComponent,
+    HeaderComponent,
+    IconComponent
+} from './components';
 
-import { ROUTES } from './app.routes';
-import { reducers } from '../store';
+import {ROUTES} from './app.routes';
+import {reducers} from '../store';
 
 @NgModule({
     declarations: [
-        BreadcrumbsComponent,
+        EditCoursePageComponent,
+        NotFoundPageComponent,
         CoursesPageComponent,
+        BreadcrumbsComponent,
         CoursesListComponent,
+        AddNewPageComponent,
         CourseItemComponent,
+        LoginPageComponent,
         ToolPanelComponent,
         LoadMoreComponent,
         HeaderComponent,

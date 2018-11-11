@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-breadcrumbs',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./breadcrumbs.component.scss']
 })
 export class BreadcrumbsComponent implements OnInit {
+    currentLocation = this.router.url.slice(1);
 
-    constructor() {
+    constructor(private router: Router) {
     }
 
     ngOnInit() {
