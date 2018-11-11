@@ -1,6 +1,7 @@
 @import './../../../styles/variables';
 
 .footer {
+  background-color: $_color-Loblolly;
   box-shadow: $footer-shadow;
   justify-content: flex-end;
   padding: $padding-base;
