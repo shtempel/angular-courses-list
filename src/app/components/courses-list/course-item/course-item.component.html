@@ -13,7 +13,7 @@
         <span class="course-item__buttons__edit btn">{{buttonsNames.edit}}
             <app-icon [className]="icons.className" [iconType]="icons.editIcon"></app-icon>
         </span>
-        <span class="course-item__buttons__del btn">{{buttonsNames.delete}}
+        <span class="course-item__buttons__del btn" (click)="deleteCourse($event)">{{buttonsNames.delete}}
             <app-icon [className]="icons.className" [iconType]="icons.trashIcon"></app-icon>
         </span>
     </div>

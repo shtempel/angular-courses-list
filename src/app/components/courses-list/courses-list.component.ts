@@ -11,10 +11,10 @@ import { ICourseItem } from 'src/app/models/course-item';
 export class CoursesListComponent implements OnInit {
     public courses: ICourseItem[] = [];
 
-    constructor(private coursesServise: CourseItemsService) {
+    constructor(private coursesService: CourseItemsService) {
     }
 
     ngOnInit() {
-        this.courses = this.coursesServise.getCourses();
+        this.courses = this.coursesService.getCourses();
     }
 }

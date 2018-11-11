@@ -1,7 +1,9 @@
 <div class="tool-panel column">
     <div class="tool-panel__search row">
-        <input class="tool-panel__search__search-input" type="text" placeholder="{{assets.inputPlaceHolder}}">
-        <span class="tool-panel__search__search-btn btn">{{assets.searchBtnTitle}}
+        <input (keyup)=onKeyUp($event)
+               class="tool-panel__search__search-input"
+               type="text" placeholder="{{assets.inputPlaceHolder}}"/>
+        <span (click)="onSearchClick($event)" class="tool-panel__search__search-btn btn">{{assets.searchBtnTitle}}
             <app-icon [className]="icons.className" [iconType]="icons.searchIcon"></app-icon>
         </span>
     </div>
