@@ -8,7 +8,7 @@ body {
 
 @media (min-width: 1000px) {
   body {
-    max-width: 1000px;
+    max-width: $body-max-width;
   }
   html {
     justify-content: space-around;
