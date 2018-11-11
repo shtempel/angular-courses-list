@@ -2,13 +2,16 @@
 @import './../../../styles/_colors.scss';
 
 .header {
+  background-color: $_color-Loblolly;
   justify-content: space-between;
   border-bottom: $border-base;
   padding: $padding-base;
   height: $header-height;
   align-items: center;
   &__logo {
-
+    margin-right: $margin-base-horizontal;
+    height: $logo_height;
+    width: $logo_width;
   }
   &__controls {
     &__login,
