@@ -4,6 +4,7 @@ export enum common {
 }
 
 export enum buttonsNames {
+    TO_TASK_PAGE = 'To task page',
     USER_LOGIN = 'User Login',
     ADD_COURSE = 'Add course',
     USER_LOGOFF = 'Log off',

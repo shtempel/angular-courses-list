@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { common } from '../../../constants/_const';
+import { common, buttonsNames } from '../../../constants/_const';
 
 @Component({
     selector: 'app-footer',
@@ -9,6 +9,7 @@ import { common } from '../../../constants/_const';
 })
 export class FooterComponent implements OnInit {
     footerText = common.COPYRIGHT;
+    toTaskPage = buttonsNames.TO_TASK_PAGE;
 
     constructor() {
     }

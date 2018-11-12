@@ -28,8 +28,9 @@ import { reducers } from '../store';
         pages.CoursesPageComponent,
         pages.AddNewPageComponent,
         pages.LoginPageComponent,
+        pages.TaskPageComponent,
 
-        AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule,
