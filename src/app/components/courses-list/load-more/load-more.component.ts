@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { buttonsNames } from '../../../../constants/_const';
+import {buttonsNames} from '../../../../constants/_const';
 
 @Component({
     selector: 'app-load-more',
@@ -14,5 +14,9 @@ export class LoadMoreComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    loadMore() {
+        console.log('Just simple console log.');
     }
 }
