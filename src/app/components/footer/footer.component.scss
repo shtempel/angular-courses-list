@@ -3,6 +3,9 @@
 .footer {
   background-color: $_color-Loblolly;
   box-shadow: $footer-shadow;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: $padding-base;
+  &__branch {
+    color: red;
+  }
 }
