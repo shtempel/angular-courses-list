@@ -1,3 +1,4 @@
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,8 +10,9 @@ import { AppComponent } from './app.component';
 import * as components from './components';
 import * as pages from './pages';
 
+import { CustomSerializer } from '../utils/routerStore';
+import { metaReducers, reducers } from '../store';
 import { ROUTES } from './app.routes';
-import { reducers } from '../store';
 
 @NgModule({
     declarations: [
@@ -36,12 +38,14 @@ import { reducers } from '../store';
         BrowserModule,
         FontAwesomeModule,
         RouterModule.forRoot(ROUTES),
-        StoreModule.forRoot(reducers),
+        StoreModule.forRoot(reducers, {metaReducers}),
         StoreDevtoolsModule.instrument({
             maxAge: 5
         }),
+        StoreRouterConnectingModule.forRoot({stateKey: 'router'})
+
     ],
-    providers: [],
+    providers: [{provide: RouterStateSerializer, useClass: CustomSerializer}],
     bootstrap: [AppComponent]
 })
 export class AppModule {
