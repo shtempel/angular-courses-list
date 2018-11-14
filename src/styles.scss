@@ -62,3 +62,14 @@ a:hover {
 .icon {
   color: $_color-Gray;
 }
+
+.fav-icon {
+  margin-left: $margin-base-horizontal;
+  color: $_color-Loblolly;
+}
+
+.fav-icon-rated,
+.fav-icon:hover {
+  color: $_color-black;
+  cursor: pointer;
+}

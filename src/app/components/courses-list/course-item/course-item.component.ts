@@ -1,8 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {faTrashAlt, faEdit} from '@fortawesome/free-solid-svg-icons';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { faTrashAlt, faEdit, faStar } from '@fortawesome/free-solid-svg-icons';
 
-import {buttonsNames} from '../../../../constants/_const';
-import {ICourseItem} from 'src/app/models/course-item';
+import * as assets from '../../../../constants/_const';
+import * as utils from '../../../../utils';
+import * as models from 'src/app/models';
 
 @Component({
     selector: 'app-course-item',
@@ -10,22 +11,29 @@ import {ICourseItem} from 'src/app/models/course-item';
     styleUrls: ['./course-item.component.scss']
 })
 export class CourseItemComponent implements OnInit {
-    @Input() public courseItem: ICourseItem;
-    @Output() deleteItem: EventEmitter<string> = new EventEmitter<string>();
-    icons = {
-        trashIcon: faTrashAlt,
-        editIcon: faEdit,
-        className: 'icon'
-    };
-    buttonsNames = {
-        delete: buttonsNames.DELETE,
-        edit: buttonsNames.EDIT
-    };
 
     constructor() {
     }
 
+    @Input() public courseItem: models.ICourseItem;
+    @Output() deleteItem: EventEmitter<string> = new EventEmitter<string>();
+    border;
+    icons = {
+        trashIcon: faTrashAlt,
+        starIcon: faStar,
+        editIcon: faEdit,
+        classNameRegular: 'icon',
+        classNameFav: 'fav-icon'
+    };
+    assets = {
+        freshBorder: assets.styles.SOLID_GREEN_BORDER,
+        futureBorder: assets.styles.SOLID_BLUE_BORDER,
+        delete: assets.buttonsNames.DELETE,
+        edit: assets.buttonsNames.EDIT
+    };
+
     ngOnInit() {
+        this.border = utils.dateHelper.checkDate(this.courseItem.date, this.assets.freshBorder, this.assets.futureBorder);
     }
 
     deleteCourse() {

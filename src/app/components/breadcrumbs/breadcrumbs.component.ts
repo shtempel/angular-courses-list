@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
     styleUrls: ['./breadcrumbs.component.scss']
 })
 export class BreadcrumbsComponent implements OnInit {
-    currentLocation = this.router.url.slice(1);
+    currentLocation = this.router.url;
 
     constructor(private router: Router) {
     }

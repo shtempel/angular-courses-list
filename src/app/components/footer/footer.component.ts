@@ -16,14 +16,15 @@ export class FooterComponent implements OnInit {
     url;
     isShowFooter: boolean;
 
-    constructor(private store: Store) {
+    constructor(private store: Store<any>) {
+
+    }
+
+    ngOnInit() {
         this.currentUrl = this.store.select('router');
         this.currentUrl.subscribe((routerState) => {
             routerState ? this.url = routerState.state.url : this.url = undefined;
             this.isShowFooter = this.url === '/courses';
         });
-    }
-
-    ngOnInit() {
     }
 }

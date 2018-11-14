@@ -1,20 +1,24 @@
-<div class="course-item column">
+<div class="course-item column" [appHighlightBorder]="border">
     <div class="course-item__main column">
         <div class="course-item__main__short row">
-            <span>{{courseItem.name}}</span>
+            <div>
+                <span>{{courseItem.name | uppercase}}</span>
+                <app-icon class="fav-icon" [ngClass]="{'fav-icon-rated': courseItem.topRated}"
+                          [iconType]="icons.starIcon"></app-icon>
+            </div>
             <div class="course-item__main__short__duration-year">
-                <span>{{courseItem.duration}}</span>
-                <span>{{courseItem.date}}</span>
+                <span>{{courseItem.duration  | courseDuration: duration}}</span>
+                <span>{{courseItem.date | date : 'MM.dd.yyyy'}}</span>
             </div>
         </div>
         <span class="course-item__main__short__description">{{courseItem.description}}</span>
     </div>
     <div class="course-item__buttons row">
-        <span class="course-item__buttons__edit btn">{{buttonsNames.edit}}
-            <app-icon [className]="icons.className" [iconType]="icons.editIcon"></app-icon>
+        <span class="course-item__buttons__edit btn">{{assets.edit}}
+            <app-icon [className]="icons.classNameRegular" [iconType]="icons.editIcon"></app-icon>
         </span>
-        <span class="course-item__buttons__del btn" (click)="deleteCourse($event)">{{buttonsNames.delete}}
-            <app-icon [className]="icons.className" [iconType]="icons.trashIcon"></app-icon>
+        <span class="course-item__buttons__del btn" (click)="deleteCourse($event)">{{assets.delete}}l
+            <app-icon [className]="icons.classNameRegular" [iconType]="icons.trashIcon"></app-icon>
         </span>
     </div>
 </div>

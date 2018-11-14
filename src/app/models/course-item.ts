@@ -1,7 +1,8 @@
 export interface ICourseItem {
-    id: number;
-    date: String;
-    name: String;
+    description: string;
+    topRated: boolean;
     duration: number;
-    description: String;
+    date: string;
+    name: string;
+    id: number;
 }
