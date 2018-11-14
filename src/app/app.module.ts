@@ -39,6 +39,7 @@ import { ROUTES } from './app.routes';
         directives.HighlightBorderDirective,
 
         pipes.CourseDurationPipe,
+        pipes.SearchSortingPipe,
         pipes.OrderByDatePipe
     ],
     imports: [
