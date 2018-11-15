@@ -10,13 +10,16 @@ import { AppComponent } from './app.component';
 import * as components from './components';
 import * as pages from './pages';
 
-import { CustomSerializer } from '../utils/routerStore';
 import { metaReducers, reducers } from '../store';
+import * as directives from './directives';
+import * as  utils from './../utils/index';
+import * as pipes from './pipes/index';
 import { ROUTES } from './app.routes';
-
 
 @NgModule({
     declarations: [
+        AppComponent,
+
         components.BreadcrumbsComponent,
         components.CoursesListComponent,
         components.CourseItemComponent,
@@ -31,8 +34,13 @@ import { ROUTES } from './app.routes';
         pages.CoursesPageComponent,
         pages.AddNewPageComponent,
         pages.LoginPageComponent,
+        pages.TaskPageComponent,
 
-        AppComponent
+
+        directives.HighlightBorderDirective,
+
+        pipes.CourseDurationPipe,
+        pipes.OrderByDatePipe
     ],
     imports: [
         BrowserModule,
@@ -44,7 +52,7 @@ import { ROUTES } from './app.routes';
         }),
         StoreRouterConnectingModule.forRoot({stateKey: 'router'})
     ],
-    providers: [{provide: RouterStateSerializer, useClass: CustomSerializer}],
+    providers: [{provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer}],
     bootstrap: [AppComponent]
 })
 export class AppModule {

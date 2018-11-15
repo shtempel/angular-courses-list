@@ -32,12 +32,19 @@ body {
   display: flex;
 }
 
-.btn {
+.btn, a {
+  text-decoration: none;
+  color: $_color-black;
   text-align: center;
   cursor: pointer;
 }
 
-.btn:hover {
+a:visited {
+  text-decoration: none;
+}
+
+.btn:hover,
+a:hover {
   background-color: $_color-Gray;
   color: $_color-white;
   outline: none;
@@ -54,4 +61,15 @@ body {
 
 .icon {
   color: $_color-Gray;
+}
+
+.fav-icon {
+  margin-left: $margin-base-horizontal;
+  color: $_color-Loblolly;
+}
+
+.fav-icon-rated,
+.fav-icon:hover {
+  color: $_color-black;
+  cursor: pointer;
 }

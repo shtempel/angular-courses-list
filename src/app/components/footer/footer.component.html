@@ -1,4 +1,8 @@
-<div class="footer row">
-    <span class="footer__branch">Branch: Develop</span>
+<div class="footer row" *ngIf=isShowFooter;>
+    <div>
+        <span class="footer__branch">Branch: Module 4</span>
+        <a target="_blank" routerLink='task' class="task-page__back-btn btn">{{toTaskPage}}</a>
+    </div>
+
     <span>{{footerText }}</span>
 </div>

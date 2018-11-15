@@ -2,10 +2,12 @@
 
 .footer {
   background-color: $_color-Loblolly;
-  box-shadow: $footer-shadow;
   justify-content: space-between;
+  box-shadow: $footer-shadow;
   padding: $padding-base;
+
   &__branch {
+    margin-right: $margin-base-horizontal;
     color: red;
   }
 }
