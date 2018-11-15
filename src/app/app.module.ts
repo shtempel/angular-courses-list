@@ -18,6 +18,8 @@ import { ROUTES } from './app.routes';
 
 @NgModule({
     declarations: [
+        AppComponent,
+
         components.BreadcrumbsComponent,
         components.CoursesListComponent,
         components.CourseItemComponent,
@@ -34,12 +36,10 @@ import { ROUTES } from './app.routes';
         pages.LoginPageComponent,
         pages.TaskPageComponent,
 
-        AppComponent,
 
         directives.HighlightBorderDirective,
 
         pipes.CourseDurationPipe,
-        pipes.SearchSortingPipe,
         pipes.OrderByDatePipe
     ],
     imports: [
