@@ -1,3 +1,3 @@
-import {CoursesPageComponent} from './courses-page.component';
+import { CoursesPageComponent } from './courses-page.component';
 
-export {CoursesPageComponent};
+export { CoursesPageComponent };

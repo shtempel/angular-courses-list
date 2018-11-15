@@ -1,4 +1,4 @@
-import {BreadcrumbsComponent} from './breadcrumbs.component';
+import { BreadcrumbsComponent } from './breadcrumbs.component';
 
-export {BreadcrumbsComponent};
+export { BreadcrumbsComponent };
 

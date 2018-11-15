@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 
 import * as appActions from './../../../store/app/actions';
 import { buttonsNames } from '../../../constants/_const';
-import { App } from '../../models/app';
+import { App } from '../../models';
 
 @Component({
     selector: 'app-header',

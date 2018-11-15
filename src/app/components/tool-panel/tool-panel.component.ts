@@ -1,7 +1,7 @@
-import {faFileAlt, faSearch} from '@fortawesome/free-solid-svg-icons';
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { faFileAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-import {buttonsNames, common} from '../../../constants/_const';
+import { buttonsNames, common } from '../../../constants/_const';
 
 @Component({
     selector: 'app-tool-panel',

@@ -34,8 +34,6 @@ import { ROUTES } from './app.routes';
         pages.CoursesPageComponent,
         pages.AddNewPageComponent,
         pages.LoginPageComponent,
-        pages.TaskPageComponent,
-
 
         directives.HighlightBorderDirective,
 
