@@ -7,39 +7,26 @@ import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import * as components from './components';
-import * as pages from './pages';
+import { components } from './components';
+import { pages } from './pages';
 
 import { metaReducers, reducers } from '../store';
-import * as directives from './directives';
-import * as  utils from './../utils/index';
-import * as pipes from './pipes/index';
+import { directives } from './directives';
+import * as utils from './../utils/index';
 import { ROUTES } from './app.routes';
+import { pipes } from './pipes';
+import { CourseItemsService } from './services/course-items.service';
+
+const declarations = [
+    AppComponent,
+    ...components,
+    ...directives,
+    ...pages,
+    ...pipes
+];
 
 @NgModule({
-    declarations: [
-        AppComponent,
-
-        components.BreadcrumbsComponent,
-        components.CoursesListComponent,
-        components.CourseItemComponent,
-        components.ToolPanelComponent,
-        components.LoadMoreComponent,
-        components.HeaderComponent,
-        components.FooterComponent,
-        components.IconComponent,
-
-        pages.EditCoursePageComponent,
-        pages.NotFoundPageComponent,
-        pages.CoursesPageComponent,
-        pages.AddNewPageComponent,
-        pages.LoginPageComponent,
-
-        directives.HighlightBorderDirective,
-
-        pipes.CourseDurationPipe,
-        pipes.OrderByDatePipe
-    ],
+    declarations: [...declarations],
     imports: [
         BrowserModule,
         FontAwesomeModule,
@@ -50,7 +37,10 @@ import { ROUTES } from './app.routes';
         }),
         StoreRouterConnectingModule.forRoot({stateKey: 'router'})
     ],
-    providers: [{provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer}],
+    providers: [
+        {provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer},
+        {provide: CourseItemsService, useClass: CourseItemsService}
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

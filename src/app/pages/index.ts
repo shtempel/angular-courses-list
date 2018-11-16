@@ -4,10 +4,10 @@ import { CoursesPageComponent } from './courses-page';
 import { AddNewPageComponent } from './add-new-page';
 import { LoginPageComponent } from './login-page';
 
-export {
+export const pages = [
     EditCoursePageComponent,
     NotFoundPageComponent,
     CoursesPageComponent,
     AddNewPageComponent,
     LoginPageComponent
-};
+];

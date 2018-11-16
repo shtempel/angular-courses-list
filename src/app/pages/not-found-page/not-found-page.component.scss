@@ -1,0 +1,8 @@
+@import './../../../styles/variables';
+
+.not-found {
+  text-align: center;
+  &__back-btn {
+    padding: $padding-base;
+  }
+}

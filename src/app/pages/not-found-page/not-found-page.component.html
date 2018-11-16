@@ -1,3 +1,10 @@
-<p>
-    not-found-page works!
-</p>
+<div class="not-found column">
+    <div class="not-found__title">
+        <h1>404</h1>
+        <h2>{{title | uppercase}}</h2>
+    </div>
+    <div class="btn not-found__back-btn" routerLink='/'>
+        <app-icon [iconType]="arrowIcon"></app-icon>
+        {{backBtn}}
+    </div>
+</div>

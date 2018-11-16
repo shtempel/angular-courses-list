@@ -20,8 +20,5 @@ export class CoursesListComponent implements OnInit {
         this.courses = this.coursesService.getCourses();
     }
 
-    search(name) {
-        const regexp = new RegExp(name, 'i');
-        return this.courses.filter((course) => regexp.test(course.name));
-    }
+
 }

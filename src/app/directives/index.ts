@@ -1,5 +1,5 @@
 import { HighlightBorderDirective } from './highlight-border';
 
-export {
+export const directives = [
     HighlightBorderDirective
-};
+];

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { common, buttonsNames } from '../../../constants/_const';
+import { common } from '../../../constants/_const';
 
 @Component({
     selector: 'app-footer',
