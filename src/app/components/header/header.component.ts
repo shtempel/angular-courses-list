@@ -8,7 +8,7 @@ import { App } from '../../models';
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss']
+    styleUrls: [ './header.component.scss' ]
 })
 export class HeaderComponent implements OnInit {
     authStatus;
@@ -18,8 +18,6 @@ export class HeaderComponent implements OnInit {
     };
 
     constructor(private  store: Store<App>) {
-        this.authStatus = this.store.select('app');
-        this.authStatus.subscribe(status => this.authStatus = status.isAuthorized);
     }
 
     onLogin() {
@@ -40,5 +38,7 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.authStatus = this.store.select('app');
+        this.authStatus.subscribe(status => this.authStatus = status.isAuthorized);
     }
 }

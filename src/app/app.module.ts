@@ -2,6 +2,7 @@ import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,8 @@ import { directives } from './directives';
 import * as utils from './../utils/index';
 import { ROUTES } from './app.routes';
 import { pipes } from './pipes';
-import { CourseItemsService } from './services/course-items.service';
+import { EffectsModule } from '@ngrx/effects';
+import { MoviesEffects } from './effects/movies/movies';
 
 const declarations = [
     AppComponent,
@@ -26,22 +28,23 @@ const declarations = [
 ];
 
 @NgModule({
-    declarations: [...declarations],
+    declarations: [ ...declarations ],
     imports: [
         BrowserModule,
+        HttpClientModule,
+        EffectsModule.forRoot([MoviesEffects]),
         FontAwesomeModule,
         RouterModule.forRoot(ROUTES),
         StoreModule.forRoot(reducers, {metaReducers}),
         StoreDevtoolsModule.instrument({
-            maxAge: 5
+            maxAge: 15
         }),
         StoreRouterConnectingModule.forRoot({stateKey: 'router'})
     ],
     providers: [
-        {provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer},
-        {provide: CourseItemsService, useClass: CourseItemsService}
+        {provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer}
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [ AppComponent ]
 })
 export class AppModule {
 }

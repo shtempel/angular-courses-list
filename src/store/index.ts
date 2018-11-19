@@ -2,7 +2,7 @@ import { routerReducer } from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { MetaReducer } from '@ngrx/store';
 
-import * as fromCourses from './courses/reducer';
+import * as fromCourses from './movies/reducer';
 import * as fromApp from './app/reducer';
 
 import { environment } from '../environments/environment.prod';

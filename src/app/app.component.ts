@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { ICourseItem } from './models';
 
-import * as symbolActions from './../store/courses/actions';
+import { MoviesService } from './services/movies/movies.service';
+import * as moviesActions from '../store/movies/actions';
+import { GetCourses } from '../store/movies/actions';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent implements OnInit {
+    crs;
     courses = [
         {
             id: 1,
@@ -29,36 +33,14 @@ export class AppComponent implements OnInit {
         }
     ];
 
-    constructor(private store: Store<ICourseItem>) {
+    constructor(private store: Store<ICourseItem>, private service: MoviesService) {
     }
 
     ngOnInit() {
-        // const toLocalStorage = JSON.stringify(this.courses);
-        // localStorage.clear();
-        // localStorage.setItem('course', toLocalStorage);
-        // const fromLocalStorage = localStorage.getItem('course');
-        // const y = JSON.parse(fromLocalStorage);
-        // console.log(y);
-
-        this.store.dispatch({
-            type: symbolActions.GET_COURSES_SUCCESS
-        });
-
-        this.store.dispatch({
-            type: symbolActions.ADD_COURSE_SUCCESS,
-            payload: {
-                id: 4,
-                date: '03-01-2019',
-                name: 'Course four',
-                duration: 30,
-                description: 'this.description',
-                topRated: true
-            },
-        });
-        this.store.dispatch({
-            type: symbolActions.DELETE_COURSE_SUCCESS,
-            payload: 2
-        });
-
+        // this.service.searchMovies()
+        //     .subscribe((movies) => {
+        //         this.crs = movies[ 1 ].id;
+        //     });
+        // this.store.dispatch(moviesActions.GetCourses);
     }
 }

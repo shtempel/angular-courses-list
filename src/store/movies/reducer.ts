@@ -22,21 +22,23 @@ const initialState = [
 
 export function reducer(state = initialState, action: coursesActions.Actions) {
     switch (action.type) {
-        case coursesActions.GET_COURSES_SUCCESS: {
+        case coursesActions.GET_MOVIES_SUCCESS: {
             return state;
         }
 
-        case coursesActions.ADD_COURSE_SUCCESS: {
+        case coursesActions.ADD_MOVIE_TO_LIBRARY_SUCCESS: {
             return [
                 ...state,
                 ...action.payload
             ];
         }
+        case 'BLA':
+            return console.log('bla');
 
-        case coursesActions.DELETE_COURSE_SUCCESS: {
+        case coursesActions.DELETE_MOVIE_SUCCESS: {
 
-            return state.filter((course) => {
-                return course.id !== action.payload;
+            return state.filter((movie) => {
+                return movie.id !== action.payload;
             });
         }
 
