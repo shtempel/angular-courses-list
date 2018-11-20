@@ -4,20 +4,20 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 
+import { MoviesEffects } from './effects/movies/movies';
 import { AppComponent } from './app.component';
 import { components } from './components';
 import { pages } from './pages';
 
-import { metaReducers, reducers } from '../store';
+import { metaReducers, reducers } from '../store/reducers';
 import { directives } from './directives';
 import * as utils from './../utils/index';
 import { ROUTES } from './app.routes';
 import { pipes } from './pipes';
-import { EffectsModule } from '@ngrx/effects';
-import { MoviesEffects } from './effects/movies/movies';
 
 const declarations = [
     AppComponent,
@@ -28,7 +28,7 @@ const declarations = [
 ];
 
 @NgModule({
-    declarations: [ ...declarations ],
+    declarations: [...declarations],
     imports: [
         BrowserModule,
         HttpClientModule,
@@ -44,7 +44,7 @@ const declarations = [
     providers: [
         {provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer}
     ],
-    bootstrap: [ AppComponent ]
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

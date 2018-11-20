@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import * as appActions from './../../../store/app/actions';
+import * as appActions from '../../../store/actions/app';
 import { buttonsNames } from '../../../constants/_const';
 import { App } from '../../models';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
-    styleUrls: [ './header.component.scss' ]
+    styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
     authStatus;
@@ -28,13 +28,8 @@ export class HeaderComponent implements OnInit {
         this.setStatus(false);
     }
 
-    setStatus(status) {
-        this.store.dispatch({
-            type: appActions.SET_AUTHORISED_STATE,
-            payload: {
-                status: status
-            }
-        });
+    setStatus(status: boolean) {
+        this.store.dispatch(new appActions.SetAuthState({status: status}));
     }
 
     ngOnInit() {

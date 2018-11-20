@@ -9,4 +9,4 @@ export class SetAuthState implements Action {
     }
 }
 
-export type Actions = SetAuthState;
+export type AppActions = SetAuthState;

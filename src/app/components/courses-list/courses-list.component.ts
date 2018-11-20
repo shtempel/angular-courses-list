@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CourseItemsService } from '../../services/course-items.service';
 import * as assets from '../../../constants/_const';
 import * as models from 'src/app/models';
+import { CourseItemsService } from '../../services/course-items.service';
 
 @Component({
     selector: 'app-courses-list',

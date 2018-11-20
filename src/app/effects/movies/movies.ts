@@ -1,30 +1,48 @@
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { Actions, Effect } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
-import { MoviesService } from '../../services/movies/movies.service';
-import { Actions, Effect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { Action, Store } from '@ngrx/store';
-import * as moviesActions from './../../../store/movies/actions';
-import * as appActions from './../../../store/app/actions';
-import { App } from '../../models';
+
+import * as moviesActions from './../../../store/actions/movies';
+import * as fromServices from './../../services/';
+import { select, Store } from '@ngrx/store';
+import { MoviesState } from '../../../store/reducers/movies';
+import * as fromMoviesReducer from './../../../store/reducers/movies';
 
 @Injectable()
 export class MoviesEffects {
+    searchToken: Observable<string>;
+    token;
 
     @Effect()
-    searchMovies = this.actions.ofType(moviesActions.GET_MOVIES_SUCCESS).pipe(
-        mergeMap(() => {
-            return this.moviesService
-                .searchMovies()
-                .pipe(
-                    map(() => new moviesActions.Bla())
-                );
-        })
-    );
+    loadMovies$ = this.actions$.ofType(moviesActions.FETCHING_MOVIES)
+        .pipe(
+            switchMap(() => {
+                return this.moviesService.searchMovies(this.token)
+                    .pipe(
+                        map(movies => new moviesActions.FetchMoviesSuccess(movies.data.map(
+                            movie => {
+                                return {
+                                    id: movie.id,
+                                    title: movie.title,
+                                    voteAverage: movie.vote_average,
+                                    releaseDate: movie.release_date,
+                                    overview: movie.overview,
+                                    runtime: movie.runtime,
+                                    posterPath: movie.poster_path
+                                };
+                            }
+                        ))),
+                        catchError(error => of(new moviesActions.FetchMoviesFail(error)))
+                    );
+            })
+        );
 
-    constructor(
-        private actions: Actions,
-        private moviesService: MoviesService,
-        private  store: Store<App>) {
+    constructor(private actions$: Actions, private moviesService: fromServices.MoviesService, private store: Store<MoviesState>) {
+        this.searchToken = this.store.pipe(select(fromMoviesReducer.selectToken));
+        this.searchToken
+            .subscribe(total => {
+                this.token = total;
+            });
     }
 }
