@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -20,6 +21,7 @@ export class MoviesService {
                 searchBy: this.SEARCH_BY,
                 limit: this.SEARCH_LIMIT
             }
-        });
+        })
+            .pipe(catchError((error: any) => Observable.throw(error.json)));
     }
 }

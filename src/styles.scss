@@ -15,6 +15,9 @@ body {
     flex-direction: row;
     display: flex;
   }
+  .container {
+    width: $body-max-width;
+  }
 }
 
 * {
@@ -32,6 +35,10 @@ body {
   display: flex;
 }
 
+button {
+  background-color: $_color-white;
+}
+
 .btn, a, img {
   text-decoration: none;
   color: $_color-black;
@@ -44,7 +51,8 @@ a:visited {
 }
 
 .btn:hover,
-a:hover {
+a:hover,
+button:hover {
   background-color: $_color-Gray;
   color: $_color-white;
   outline: none;
@@ -73,3 +81,5 @@ a:hover {
   color: $_color-black;
   cursor: pointer;
 }
+
+

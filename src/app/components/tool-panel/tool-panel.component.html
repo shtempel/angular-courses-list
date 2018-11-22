@@ -3,12 +3,12 @@
         <input (keyup)=onKeyUp($event)
                class="tool-panel__search__search-input"
                type="text" placeholder="{{assets.inputPlaceHolder}}"/>
-        <span (click)="onSearchClick($event)"
-              class="tool-panel__search__search-btn btn"
-              routerLink="/search/{{inputValue}}">
+        <button (click)="onSearchClick($event)"
+                class="tool-panel__search__search-btn btn"
+                routerLink="/search/{{inputValue}}">
             {{assets.searchBtnTitle}}
             <app-icon [className]="icons.className" [iconType]="icons.searchIcon"></app-icon>
-        </span>
+        </button>
     </div>
     <div class="tool-panel__add-new">
         <div class="tool-panel__add-new__add-new-btn btn" routerLink='/movies/new'>

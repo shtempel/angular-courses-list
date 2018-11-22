@@ -1,0 +1,23 @@
+@import './../../../styles/variables';
+
+.search-results-list {
+  padding: $padding-base;
+  height: $container-height;
+  overflow: auto;
+}
+
+@media (min-width: 481px) and (max-width: 1000px){
+  .search-results-list {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}
+
+@media (min-width: 1000px) {
+  .search-results-list {
+    display: flex;
+    flex-direction: column;
+  }
+}

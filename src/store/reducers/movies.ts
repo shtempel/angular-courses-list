@@ -1,6 +1,6 @@
 import * as moviesActions from '../actions/movies';
 import { IMovieItem } from '../../app/models';
-import { createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export interface MoviesState {
     searchResult: IMovieItem[];
@@ -9,7 +9,7 @@ export interface MoviesState {
     loaded: boolean;
 }
 
-const initialState: MoviesState = {
+export const initialState: MoviesState = {
     searchResult: [],
     searchToken: null,
     loading: false,
@@ -36,7 +36,6 @@ export function movies(state = initialState, action: moviesActions.MoviesActions
         }
 
         case moviesActions.FETCHING_MOVIES_SUCCESS: {
-            console.log(action.payload);
             return {
                 ...state,
                 searchResult: action.payload,
@@ -66,11 +65,13 @@ export function movies(state = initialState, action: moviesActions.MoviesActions
 }
 
 // Selectors
-export const getSearchToken = (state: MoviesState) => state.searchToken;
 
-export const selectToken = createSelector(
-    getSearchToken,
-    (token: string) => {
-        return token;
-    }
+
+export const getMoviesState = createFeatureSelector<MoviesState>(
+    'movies'
+);
+
+export const getSearchResults = createSelector(
+    getMoviesState,
+    (state: MoviesState) => state.searchResult
 );

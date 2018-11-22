@@ -3,9 +3,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { buttonsNames, common } from '../../../constants/_const';
-import { IMovieItem } from '../../models';
 import * as moviesActions from './../../../store/actions/movies';
-import { map } from 'rxjs/operators';
+import { IMovieItem } from '../../models';
 
 @Component({
     selector: 'app-tool-panel',
@@ -13,7 +12,7 @@ import { map } from 'rxjs/operators';
     styleUrls: ['./tool-panel.component.scss']
 })
 export class ToolPanelComponent implements OnInit {
-    inputValue;
+    inputValue = ' ';
     @Output() click: EventEmitter<string> = new EventEmitter<string>();
     icons = {
         searchIcon: faSearch,
@@ -34,7 +33,6 @@ export class ToolPanelComponent implements OnInit {
 
     onKeyUp(event: any) {
         this.inputValue = event.target.value;
-
     }
 
     onSearchClick() {
