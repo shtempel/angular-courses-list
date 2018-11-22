@@ -33,7 +33,7 @@ export class CourseItemComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.border = utils.dateHelper.checkDate(this.courseItem.date, this.assets.freshBorder, this.assets.futureBorder);
+        this.border = utils.dateHelper.setBorder(this.courseItem.releaseDate, this.assets.freshBorder, this.assets.futureBorder);
     }
 
     deleteCourse() {

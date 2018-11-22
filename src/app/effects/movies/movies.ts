@@ -5,6 +5,7 @@ import { of } from 'rxjs';
 
 import * as moviesActions from './../../../store/actions/movies';
 import * as fromServices from './../../services/';
+import * as moment from 'moment';
 
 @Injectable()
 export class MoviesEffects {
@@ -13,7 +14,6 @@ export class MoviesEffects {
     loadMovies$ = this.actions$.ofType(moviesActions.FETCHING_MOVIES)
         .pipe(
             switchMap((action: moviesActions.MoviesActions) => {
-                console.log(action.payload);
                 return this.moviesService.searchMovies(action.payload)
                     .pipe(
                         map(movies => new moviesActions.FetchMoviesSuccess(movies.data.map(
@@ -22,7 +22,7 @@ export class MoviesEffects {
                                     id: movie.id,
                                     title: movie.title,
                                     voteAverage: movie.vote_average,
-                                    releaseDate: movie.release_date,
+                                    releaseDate: moment(movie.release_date).format('MM/DD/YYYY'),
                                     overview: movie.overview,
                                     runtime: movie.runtime,
                                     posterPath: movie.poster_path,

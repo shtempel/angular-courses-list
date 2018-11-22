@@ -18,5 +18,10 @@ export enum buttonsNames {
 
 export enum styles {
     SOLID_GREEN_BORDER = '2px solid #4adc4a',
-    SOLID_BLUE_BORDER = '2px solid #5a5af5'
+    SOLID_BLUE_BORDER = '2px solid #5a5af5',
+    PADDING_FOR_NONE_INTEGER = '.4rem',
+    PADDING_FOR_INTEGER = '5px 10px',
+    MEDIUM_RATING_BORDER = '2px solid #E3C326',
+    HIGH_RATING_BORDER = '2px solid #48E326',
+    LOW_RATING_BORDER = '2px solid #E32636'
 }

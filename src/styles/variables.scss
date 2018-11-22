@@ -4,6 +4,7 @@
 $padding-small:                         .4rem;
 $padding-base:                          .8rem;
 $padding-for-date:                      0 .4rem;
+$circle-padding:                        5px 10px;
 
 /*Logo size*/
 $logo_height:                           50px;
@@ -23,7 +24,7 @@ $normal-font:                           normal;
 $border-base:                           1px solid $color-border;
 $border-outer:                          2px solid $color-border;
 $border-radius-small:                   5px;
-$border-radius-circle:                  10px;
+$border-radius-circle:                  50%;
 
 /*Common*/
 $description-height-medium:             60px;

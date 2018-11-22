@@ -17,7 +17,7 @@ export class CourseItemsService {
         return [
             {
                 id: 1,
-                date: '11-14-2018',
+                releaseDate: '11-14-2018',
                 name: 'Course one',
                 duration: 120,
                 description: this.description,
@@ -25,7 +25,7 @@ export class CourseItemsService {
             },
             {
                 id: 2,
-                date: '11-14-2018',
+                releaseDate: '11-14-2018',
                 name: 'Course two',
                 duration: 60,
                 description: this.description,
@@ -33,7 +33,7 @@ export class CourseItemsService {
             },
             {
                 id: 3,
-                date: '11-11-2017',
+                releaseDate: '11-11-2017',
                 name: 'Course three',
                 duration: 190,
                 description: this.description,
@@ -41,7 +41,7 @@ export class CourseItemsService {
             },
             {
                 id: 4,
-                date: '03-01-2019',
+                releaseDate: '03-01-2019',
                 name: 'Course four',
                 duration: 30,
                 description: this.description,
@@ -49,7 +49,7 @@ export class CourseItemsService {
             },
             {
                 id: 5,
-                date: '11-11-2019',
+                releaseDate: '11-11-2019',
                 name: 'Course five',
                 duration: 90,
                 description: this.description,
@@ -57,7 +57,7 @@ export class CourseItemsService {
             },
             {
                 id: 6,
-                date: '11-11-2019',
+                releaseDate: '11-11-2019',
                 name: 'Course six',
                 duration: 43,
                 description: this.description,

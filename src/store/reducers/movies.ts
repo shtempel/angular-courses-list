@@ -4,14 +4,12 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export interface MoviesState {
     searchResult: IMovieItem[];
-    searchToken: string;
     loading: boolean;
     loaded: boolean;
 }
 
 export const initialState: MoviesState = {
     searchResult: [],
-    searchToken: null,
     loading: false,
     loaded: false
 };
@@ -22,7 +20,6 @@ export function movies(state = initialState, action: moviesActions.MoviesActions
         case moviesActions.FETCHING_MOVIES: {
             return {
                 ...state,
-                searchToken: action.payload,
                 loading: true
             };
         }

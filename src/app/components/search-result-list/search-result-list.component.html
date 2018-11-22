@@ -1,3 +1,4 @@
 <div class="search-results-list">
-    <app-result-item *ngFor="let movie of (movies$ | async)" [movieItem]="movie"></app-result-item>
+    <app-result-item *ngFor="let movie of (movies$ | async | orderByDate: releaseDate)"
+                     [movieItem]="movie"></app-result-item>
 </div>
