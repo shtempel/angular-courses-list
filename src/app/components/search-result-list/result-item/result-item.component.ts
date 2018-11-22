@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IMovieItem } from '../../../models';
 
-import * as assets from '../../../../constants/_const';
 import * as utils from '../../../../utils';
 
 @Component({
@@ -14,17 +13,13 @@ export class ResultItemComponent implements OnInit {
     border;
     padding;
     ratingBorder;
-    assets = {
-        freshBorder: assets.styles.SOLID_GREEN_BORDER,
-        futureBorder: assets.styles.SOLID_BLUE_BORDER
-    };
 
     constructor() {
     }
 
     ngOnInit() {
-        this.border = utils.dateHelper.setBorder(this.movieItem.releaseDate, this.assets.freshBorder, this.assets.futureBorder);
-        this.ratingBorder = utils.borderHelper.setBorderRating(this.movieItem.voteAverage);
-        this.padding = utils.paddingHelper.setPadding(this.movieItem.voteAverage);
+        this.ratingBorder = utils.styleHelper.setBorder('rating', this.movieItem.voteAverage);
+        this.border = utils.styleHelper.setBorder('dateRange', this.movieItem.releaseDate);
+        this.padding = utils.styleHelper.setPadding('rating', this.movieItem.voteAverage);
     }
 }

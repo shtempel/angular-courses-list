@@ -26,14 +26,12 @@ export class CourseItemComponent implements OnInit {
         classNameFav: 'fav-icon'
     };
     assets = {
-        freshBorder: assets.styles.SOLID_GREEN_BORDER,
-        futureBorder: assets.styles.SOLID_BLUE_BORDER,
         delete: assets.buttonsNames.DELETE,
         edit: assets.buttonsNames.EDIT
     };
 
     ngOnInit() {
-        this.border = utils.dateHelper.setBorder(this.courseItem.releaseDate, this.assets.freshBorder, this.assets.futureBorder);
+        this.border = utils.styleHelper.setBorder('dateRange', this.courseItem.releaseDate);
     }
 
     deleteCourse() {
