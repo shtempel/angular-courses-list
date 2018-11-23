@@ -1,8 +1,14 @@
 export enum common {
     COPYRIGHT = 'Copyright © Video courses, All Rights Reserved',
+    PLEASE_ENTER_PASSWORD = 'Please enter password',
     SEARCH_PLACE_HOLDER = 'Name, fragment or date',
+    PLEASE_ENTER_LOGIN = 'Please enter login',
     NO_DATA = 'Feel free to add new course',
-    NOT_FOUND = 'Page not found'
+    REGISTER_USER = 'Register user',
+    REGISTRATION = 'Registration',
+    NOT_FOUND = 'Page not found',
+    PASSWORD = 'Password',
+    LOGIN = 'Login'
 }
 
 export enum buttonsNames {

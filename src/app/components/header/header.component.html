@@ -2,10 +2,12 @@
     <img src="./../../../assets/logo_white-blue.svg" class="header__logo" alt="www.epam.com" routerLink="/movies">
     <div class="header__controls">
         <span class="btn header__controls__login" [ngClass]="{'disabled': authStatus}"
+              *ngIf="authStatus"
               (click)="onLogin()">
             {{assets.login}}
         </span>
         <span class="btn header__controls__logout" [ngClass]="{'disabled': !authStatus}"
+              *ngIf="authStatus"
               (click)="onLogout()">
             {{assets.logout}}
         </span>

@@ -1,8 +1,8 @@
-function addCoursesToStorage(courses) {
-    localStorage.setItem('courses', JSON.stringify(courses));
+function addInfoToStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
 }
 
-function getCoursesFromStorage(storageKey) {
+function getInfoFromStorage(storageKey) {
     const storageObj = localStorage.getItem(storageKey);
     return JSON.parse(storageObj);
 }
@@ -11,4 +11,4 @@ function clearStorage() {
     localStorage.clear();
 }
 
-export { addCoursesToStorage, getCoursesFromStorage, clearStorage };
+export { addInfoToStorage, getInfoFromStorage, clearStorage };

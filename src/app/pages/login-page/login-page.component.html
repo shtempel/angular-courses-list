@@ -1,3 +1,13 @@
-<p>
-    login-page works!
-</p>
+<div class="login column">
+    <div class="login__header">{{!isRegOpen ? assets.login : assets.registration}}</div>
+    <div class="login__user-name column">
+        <label for="loginName">{{assets.login}}</label>
+        <input placeholder={{assets.loginPlaceHolder}} id="loginName">
+    </div>
+    <div class="login__user-pass column">
+        <label for="pass">{{assets.pass}}</label>
+        <input placeholder={{assets.passPlaceHolder}} type="password" id="pass">
+    </div>
+    <div class="login__submit btn" (click)="manageUserActivity()">{{!isRegOpen ? assets.login : assets.registerUser}}</div>
+    <div class="login__reg" (click)="manageForms()">{{assets.registration}}</div>
+</div>

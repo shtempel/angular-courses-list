@@ -1,3 +1,6 @@
 export interface App {
-    isAuthorized: boolean;
+    app: {
+        isAuthorized: boolean;
+        isRegOpen: boolean;
+    };
 }

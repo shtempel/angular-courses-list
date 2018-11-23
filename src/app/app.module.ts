@@ -14,6 +14,7 @@ import { components } from './components';
 import { pages } from './pages';
 
 import { metaReducers, reducers } from '../store/reducers';
+import { AuthGuard } from './services/auth/auth.guards';
 import { directives } from './directives';
 import * as utils from './../utils/index';
 import { ROUTES } from './app.routes';
@@ -42,7 +43,8 @@ const declarations = [
         StoreRouterConnectingModule.forRoot({stateKey: 'router'})
     ],
     providers: [
-        {provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer}
+        {provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer},
+        AuthGuard
     ],
     bootstrap: [AppComponent]
 })
