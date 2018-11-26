@@ -25,4 +25,7 @@ export class SetExistNameState implements Action {
     }
 }
 
-export type AppActions = SetAuthState | SetRegState | SetExistNameState;
+export type AppActions =
+    SetExistNameState |
+    SetAuthState |
+    SetRegState;

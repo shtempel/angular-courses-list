@@ -1,4 +1,5 @@
 export enum common {
+    LOGIN_EXIST = 'This user name is already exist, try another one',
     COPYRIGHT = 'Copyright © Video courses, All Rights Reserved',
     PLEASE_ENTER_PASSWORD = 'Please enter password',
     SEARCH_PLACE_HOLDER = 'Name, fragment or date',

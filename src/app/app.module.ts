@@ -8,9 +8,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 
-import { MoviesEffects } from './effects/movies/movies';
 import { AppComponent } from './app.component';
 import { components } from './components';
+import { effects } from './effects';
 import { pages } from './pages';
 
 import { metaReducers, reducers } from '../store/reducers';
@@ -29,11 +29,11 @@ const declarations = [
 ];
 
 @NgModule({
-    declarations: [...declarations],
+    declarations: [ ...declarations ],
     imports: [
         BrowserModule,
         HttpClientModule,
-        EffectsModule.forRoot([MoviesEffects]),
+        EffectsModule.forRoot([ ...effects ]),
         FontAwesomeModule,
         RouterModule.forRoot(ROUTES),
         StoreModule.forRoot(reducers, {metaReducers}),
@@ -46,7 +46,7 @@ const declarations = [
         {provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer},
         AuthGuard
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [ AppComponent ]
 })
 export class AppModule {
 }

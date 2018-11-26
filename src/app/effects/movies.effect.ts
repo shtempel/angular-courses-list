@@ -3,8 +3,8 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 
-import * as moviesActions from './../../../store/actions/movies';
-import * as fromServices from './../../services/';
+import * as moviesActions from '../../store/actions/movies';
+import * as fromServices from '../services/index';
 import * as moment from 'moment';
 
 @Injectable()

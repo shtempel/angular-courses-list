@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
+import { App } from '../../models';
+
 @Injectable()
 export class AuthGuard implements CanActivate {
     isLogged;
 
-    constructor(private router: Router, appStore: Store<any>) {
+    constructor(private router: Router, appStore: Store<App>) {
         appStore.subscribe(
             (state) => this.isLogged = state.app.isAuthorized);
     }
@@ -16,8 +18,11 @@ export class AuthGuard implements CanActivate {
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         if (!this.isLogged) {
-            this.router.navigate(['/']);
+            this.router.navigate([ '/login' ]);
             return false;
+        } else if (this.isLogged) {
+            this.router.navigate([ '/courses' ]);
+            return true;
         }
         return true;
     }

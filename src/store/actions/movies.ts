@@ -29,4 +29,7 @@ export class FetchMoviesFail implements Action {
     }
 }
 
-export type MoviesActions = FetchMoviesFail | FetchMoviesSuccess | FetchMovies;
+export type MoviesActions =
+    FetchMoviesSuccess |
+    FetchMoviesFail |
+    FetchMovies;

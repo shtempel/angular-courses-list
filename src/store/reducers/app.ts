@@ -10,14 +10,14 @@ export function app(state = initialState, action: appActions.AppActions) {
 
         case appActions.SET_AUTHORISED_STATE: {
             return {
+                ...state,
                 isAuthorized: action.payload.status,
-                isRegOpen: false
             };
         }
 
         case appActions.SET_REG_STATE: {
             return {
-                isAuthorized: false,
+                ...state,
                 isRegOpen: action.payload.status
             };
         }
