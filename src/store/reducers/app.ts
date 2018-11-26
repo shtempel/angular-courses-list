@@ -1,11 +1,11 @@
 import * as appActions from '../actions/app';
 
 const initialState = {
-    isAuthorized: false,
+    isAuthorized: true,
     isRegOpen: false
 };
 
-export function app(state = initialState, action: appActions.AppActions) {
+export function reducer(state = initialState, action: appActions.AppActions) {
     switch (action.type) {
 
         case appActions.SET_AUTHORISED_STATE: {

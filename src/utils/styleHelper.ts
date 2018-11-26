@@ -23,7 +23,7 @@ function setPaddingViaRating(rating: number) {
 }
 
 function setBorderViaDateRange(date: string) {
-    if (moment(date).isBetween(moment(moment().subtract('years', 4)).toDate(), moment())) {
+    if (moment(date).isBetween(moment(moment().subtract(4, 'years')).toDate(), moment())) {
         return assets.styles.SOLID_GREEN_BORDER;
     } else if (moment(moment().toDate()).isBefore(moment(date).toDate())) {
         return assets.styles.SOLID_BLUE_BORDER;

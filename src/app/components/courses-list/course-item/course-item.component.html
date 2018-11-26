@@ -2,7 +2,7 @@
     <div class="course-item__main column">
         <div class="course-item__main__short row">
             <div>
-                <span>{{courseItem.name | uppercase}}</span>
+                <span>{{courseItem.title | uppercase}}</span>
                 <app-icon class="fav-icon" [ngClass]="{'fav-icon-rated': courseItem.topRated}"
                           [iconType]="icons.starIcon"></app-icon>
             </div>

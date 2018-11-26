@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
-import { CourseItemsService } from '../../services/course-items.service';
+import * as coursesActions from './../../../store/actions/courses';
+import { getCourses } from '../../../store/reducers/courses';
 import * as assets from '../../../constants/_const';
-import * as models from 'src/app/models';
+import { ICourseItem } from 'src/app/models';
 
 @Component({
     selector: 'app-courses-list',
@@ -10,15 +13,14 @@ import * as models from 'src/app/models';
     styleUrls: ['./courses-list.component.scss']
 })
 export class CoursesListComponent implements OnInit {
-    public courses: models.ICourseItem[] = [];
+    public courses$: Observable<ICourseItem[]>;
     emptyListMessage = assets.common.NO_DATA;
 
-    constructor(private coursesService: CourseItemsService) {
+    constructor(private coursesStore: Store<ICourseItem>) {
     }
 
     ngOnInit() {
-        this.courses = this.coursesService.getCourses();
+        this.coursesStore.dispatch(new coursesActions.FetchCourses());
+        this.courses$ = this.coursesStore.select(getCourses);
     }
-
-
 }

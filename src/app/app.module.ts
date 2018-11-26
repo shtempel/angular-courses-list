@@ -29,11 +29,11 @@ const declarations = [
 ];
 
 @NgModule({
-    declarations: [ ...declarations ],
+    declarations: [...declarations],
     imports: [
         BrowserModule,
         HttpClientModule,
-        EffectsModule.forRoot([ ...effects ]),
+        EffectsModule.forRoot([...effects]),
         FontAwesomeModule,
         RouterModule.forRoot(ROUTES),
         StoreModule.forRoot(reducers, {metaReducers}),
@@ -43,10 +43,9 @@ const declarations = [
         StoreRouterConnectingModule.forRoot({stateKey: 'router'})
     ],
     providers: [
-        {provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer},
-        AuthGuard
+        {provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer}
     ],
-    bootstrap: [ AppComponent ]
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

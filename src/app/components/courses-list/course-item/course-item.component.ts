@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faTrashAlt, faEdit, faStar } from '@fortawesome/free-solid-svg-icons';
+import { Store } from '@ngrx/store';
 
+import * as actions from './../../../../store/actions/courses';
 import * as assets from '../../../../constants/_const';
+import { ICourseItem } from 'src/app/models';
 import * as utils from '../../../../utils';
 import * as models from 'src/app/models';
 
@@ -12,7 +15,7 @@ import * as models from 'src/app/models';
 })
 export class CourseItemComponent implements OnInit {
 
-    constructor() {
+    constructor(private coursesStore: Store<ICourseItem>) {
     }
 
     @Input() public courseItem: models.ICourseItem;
@@ -35,6 +38,6 @@ export class CourseItemComponent implements OnInit {
     }
 
     deleteCourse() {
-        console.log(this.courseItem.id);
+        this.coursesStore.dispatch(new actions.FetchCourseDelete(this.courseItem.id));
     }
 }

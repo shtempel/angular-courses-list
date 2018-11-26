@@ -1,7 +1,5 @@
-import { MoviesEffects } from './movies.effect';
-import { AuthEffects } from './auth.effect';
+import { CoursesEffects } from './courses.effect';
 
 export const effects = [
-    MoviesEffects,
-    AuthEffects
+    CoursesEffects
 ];

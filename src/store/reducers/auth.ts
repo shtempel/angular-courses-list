@@ -10,7 +10,7 @@ export const initialState: AuthState = {
     isUserExist: false
 };
 
-export function auth(state = initialState, action: authActions.AuthActions): AuthState {
+export function reducer(state = initialState, action: authActions.AuthActions): AuthState {
     switch (action.type) {
 
         case authActions.USER_REGISTRATION: {

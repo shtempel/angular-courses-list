@@ -4,14 +4,13 @@
                class="tool-panel__search__search-input"
                type="text" placeholder="{{assets.inputPlaceHolder}}"/>
         <button (click)="onSearchClick($event)"
-                class="tool-panel__search__search-btn btn"
-                routerLink="/search/{{inputValue}}">
+                class="tool-panel__search__search-btn btn">
             {{assets.searchBtnTitle}}
             <app-icon [className]="icons.className" [iconType]="icons.searchIcon"></app-icon>
         </button>
     </div>
     <div class="tool-panel__add-new">
-        <div class="tool-panel__add-new__add-new-btn btn" routerLink='/movies/new'>
+        <div class="tool-panel__add-new__add-new-btn btn" routerLink='/courses/new'>
             <app-icon class="icon" [iconType]="icons.newIcon"></app-icon>
             {{assets.addBtnTitle}}
         </div>

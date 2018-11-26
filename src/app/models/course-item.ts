@@ -2,7 +2,8 @@ export interface ICourseItem {
     description: string;
     releaseDate: string;
     topRated: boolean;
+    authors: string[];
     duration: number;
-    name: string;
+    title: string;
     id: number;
 }

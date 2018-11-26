@@ -1,10 +1,7 @@
 import { faFileAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Store } from '@ngrx/store';
 
 import { buttonsNames, common } from '../../../constants/_const';
-import * as moviesActions from './../../../store/actions/movies';
-import { IMovieItem } from '../../models';
 
 @Component({
     selector: 'app-tool-panel',
@@ -25,7 +22,7 @@ export class ToolPanelComponent implements OnInit {
         searchBtnTitle: buttonsNames.SEARCH
     };
 
-    constructor(private store: Store<IMovieItem>) {
+    constructor() {
     }
 
     ngOnInit() {
@@ -36,6 +33,6 @@ export class ToolPanelComponent implements OnInit {
     }
 
     onSearchClick() {
-        this.store.dispatch(new moviesActions.FetchMovies(this.inputValue));
+
     }
 }

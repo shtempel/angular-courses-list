@@ -4,16 +4,16 @@ import { routerReducer } from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { MetaReducer } from '@ngrx/store';
 
-import * as fromMovies from './movies';
+import * as fromCourses from './courses';
 import * as fromAuth from './auth';
 import * as fromApp from './app';
 
 export const reducers = {
-    app: fromApp.app,
-    auth: fromAuth.auth,
+    app: fromApp.reducer,
+    auth: fromAuth.reducer,
     router: routerReducer,
-    movies: fromMovies.movies
+    courses: fromCourses.reducer
 };
 
 export const metaReducers: MetaReducer<{}>[] =
-    !environment.production ? [ storeFreeze ] : [];
+    !environment.production ? [storeFreeze] : [];

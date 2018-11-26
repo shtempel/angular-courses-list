@@ -1,4 +1,4 @@
-import { MoviesService } from './movies/movies.service';
+import { CoursesService } from './courses/course.service';
 import { AuthService } from './auth/auth.service';
 
-export { MoviesService, AuthService };
+export { AuthService, CoursesService };
