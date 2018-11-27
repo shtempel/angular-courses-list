@@ -1,0 +1,33 @@
+<form [formGroup]="courseForm" (ngSubmit)="addCourse(courseForm.value)">
+    <div class="add-new-page column">
+
+        <div class="add-new-page__title column">
+            <label for="titleId">Title:</label>
+            <input id="titleId" formControlName="name" required/>
+        </div>
+
+        <div class="add-new-page__description column">
+            <label for="descriptionId">Description:</label>
+            <textarea id="descriptionId" rows="5" wrap="soft"></textarea>
+        </div>
+
+        <div class="add-new-page__date column">
+            <label for="dateId">Date:</label>
+            <input id="dateId"/>
+        </div>
+
+        <div class="add-new-page__duration column">
+            <label for="durationId">Duration:</label>
+            <input id="durationId"/>
+        </div>
+
+        <div class="add-new-page__authors column">
+            <label for="authorsId">Authors:</label>
+            <input id="authorsId"/>
+        </div>
+
+        <div class="add-new-page__buttons">
+            <button class="btn" (click)="addCourse()">Save</button>
+        </div>
+    </div>
+</form>

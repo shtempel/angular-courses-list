@@ -1,5 +1,6 @@
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,8 +32,10 @@ const declarations = [
 @NgModule({
     declarations: [...declarations],
     imports: [
+        FormsModule,
         BrowserModule,
         HttpClientModule,
+        ReactiveFormsModule,
         EffectsModule.forRoot([...effects]),
         FontAwesomeModule,
         RouterModule.forRoot(ROUTES),
@@ -42,8 +45,7 @@ const declarations = [
         }),
         StoreRouterConnectingModule.forRoot({stateKey: 'router'})
     ],
-    providers: [
-        {provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer}
+    providers: [{provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer}
     ],
     bootstrap: [AppComponent]
 })

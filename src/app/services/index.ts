@@ -1,4 +1,7 @@
-import { CoursesService } from './courses/course.service';
-import { AuthService } from './auth/auth.service';
+import { CoursesService } from './courses';
+import { AuthService } from './auth';
 
-export { AuthService, CoursesService };
+export {
+    CoursesService,
+    AuthService
+};

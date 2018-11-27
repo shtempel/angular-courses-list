@@ -1,0 +1,30 @@
+@import './../../../styles/variables';
+@import './../../../styles/colors';
+
+.add-new-page {
+  padding: $padding-base;
+
+  &__description {
+    textarea {
+      resize: none;
+    }
+  }
+
+  &__date {
+    width: 40%;
+  }
+
+  &__duration {
+    width: 40%;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  input, textarea {
+    border-radius: $border-radius-small;
+    padding: $padding-small;
+    border: $border-base;
+  }
+}

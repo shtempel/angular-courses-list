@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as localStorageHelper from './../utils/localStorageHelper';
 
 @Component({
     selector: 'app-root',
@@ -12,5 +11,4 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
     }
-
 }

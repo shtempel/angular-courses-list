@@ -45,6 +45,19 @@ export class CoursesEffects {
             }),
             catchError(error => of(new coursesActions.FetchCourseDeleteFail(error))));
 
+    @Effect()
+    addCourse$ = this.actions$.ofType(coursesActions.FETCH_COURSE_ADD)
+        .pipe(
+            switchMap((action: coursesActions.FetchCourseAdd) => {
+                return this.coursesService.addCourse(action.payload)
+                    .pipe(
+                        map(() => {
+                            return new coursesActions.FetchCourseAddSuccess(action.payload);
+                        })
+                    );
+            }),
+            catchError(error => of(new coursesActions.FetchCourseAddFail(error))));
+
     constructor(private actions$: Actions, private coursesService: fromServices.CoursesService) {
 
     }

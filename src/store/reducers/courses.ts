@@ -60,6 +60,13 @@ export function reducer(state = initialState, action: coursesActions.CoursesActi
             };
         }
 
+        case coursesActions.FETCH_COURSE_ADD: {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
+
         default: {
             return state;
         }

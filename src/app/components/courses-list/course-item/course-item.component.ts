@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faTrashAlt, faEdit, faStar } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
+import * as _ from 'lodash';
 
 import * as actions from './../../../../store/actions/courses';
 import * as assets from '../../../../constants/_const';
@@ -29,6 +30,7 @@ export class CourseItemComponent implements OnInit {
         classNameFav: 'fav-icon'
     };
     assets = {
+        deleteConf: assets.common.DELETE_CONFIRMATION,
         delete: assets.buttonsNames.DELETE,
         edit: assets.buttonsNames.EDIT
     };
@@ -38,6 +40,8 @@ export class CourseItemComponent implements OnInit {
     }
 
     deleteCourse() {
-        this.coursesStore.dispatch(new actions.FetchCourseDelete(this.courseItem.id));
+        if (confirm(this.assets.deleteConf + _.toUpper(this.courseItem.title) + '?')) {
+            this.coursesStore.dispatch(new actions.FetchCourseDelete(this.courseItem.id));
+        }
     }
 }

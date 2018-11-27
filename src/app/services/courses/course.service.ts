@@ -19,4 +19,8 @@ export class CoursesService {
     deleteCourseById(id: number): Observable<{}> {
         return this.http.delete<any>(`${this.API_PATH}/${id}`);
     }
+
+    addCourse(course: any) {
+        return this.http.post<any>(`${this.API_PATH}`, course);
+    }
 }
