@@ -1,0 +1,25 @@
+@import './../../../../styles/variables.scss';
+@import './../../../../styles/colors';
+label {
+  cursor: pointer;
+}
+
+.date {
+  width: 40%;
+}
+
+textarea {
+  resize: none;
+}
+
+
+.duration {
+  width: 80%;
+
+  &__value {
+    span {
+      margin-left: $margin-base-horizontal;
+      align-self: center;
+    }
+  }
+}

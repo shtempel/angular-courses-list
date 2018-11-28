@@ -1,10 +1,11 @@
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Store } from '@ngrx/store';
 
 import * as coursesActions from '../../../store/actions/courses';
+import * as assets from './../../../constants/_const';
 import { ICourseItem } from '../../models';
-import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-add-new-form',
@@ -13,23 +14,59 @@ import { Observable } from 'rxjs';
 })
 export class AddNewFormComponent implements OnInit {
     courseForm: FormGroup;
+    assets = {
+        cancel: assets.buttonsNames.CANCEL,
+        save: assets.buttonsNames.SAVE
+    };
 
-    constructor(private coursesStore: Store<ICourseItem>, private fb: FormBuilder) {
+    constructor(
+        private coursesStore: Store<ICourseItem>,
+        private location: Location,
+        private fb: FormBuilder
+    ) { }
+
+    ngOnInit() {
         this.createForm();
     }
 
-    ngOnInit() {
-    }
+    save(formData: any): void {
+        const controls = this.courseForm.controls;
+        Object.keys(controls).forEach(key => {
+            controls[key].markAsTouched();
+        });
 
-    addCourse(formData: any): void {
         if (formData) {
-            this.coursesStore.dispatch(new coursesActions.FetchCourseAdd({...formData}));
+            this.coursesStore.dispatch(new coursesActions.FetchCourseAdd(
+                {
+                    name: formData.title,
+                    description: formData.description,
+                    length: formData.duration,
+                    date: formData.date
+                }
+            ));
+            this.location.back();
         }
     }
 
     createForm(): void {
         this.courseForm = this.fb.group({
-            'name': ['', Validators.required]
+            title: [null, Validators.compose(
+                [
+                    Validators.required,
+                    Validators.maxLength(50),
+                    Validators.minLength(3)
+                ])],
+            description: [null, Validators.compose(
+                [
+                    Validators.required,
+                    Validators.maxLength(500)
+                ])],
+            duration: [null, Validators.compose(
+                [
+                    Validators.required,
+                    Validators.pattern(/^[0-9]*$/)]),
+            ],
+            date: [null, [Validators.required]]
         });
     }
 }

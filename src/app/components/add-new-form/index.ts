@@ -1,3 +1,7 @@
+import { GenericFormControlComponent } from './generic-form-control';
 import { AddNewFormComponent } from './add-new-form.component';
 
-export { AddNewFormComponent };
+export const AddNewFormComponents = [
+    GenericFormControlComponent,
+    AddNewFormComponent
+];

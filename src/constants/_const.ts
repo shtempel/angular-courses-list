@@ -13,6 +13,12 @@ export enum common {
     LOGIN = 'Login'
 }
 
+export enum errors {
+    REQUIRED_FIELD = ' field is required',
+    MIN_LENGTH = 'Min length is ',
+    MAX_LENGTH = 'Max length is ',
+}
+
 export enum buttonsNames {
     USER_LOGIN = 'User Login',
     ADD_COURSE = 'Add course',
@@ -20,6 +26,8 @@ export enum buttonsNames {
     LOAD_MORE = 'LOAD MORE',
     SEARCH = 'Search',
     DELETE = 'Delete',
+    CANCEL = 'Cancel',
+    SAVE = 'Save',
     BACK = 'Back',
     EDIT = 'Edit'
 }

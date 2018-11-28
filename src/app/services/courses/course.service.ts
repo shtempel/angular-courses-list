@@ -9,8 +9,7 @@ export class CoursesService {
 
     private API_PATH = 'http://localhost:3004/courses';
 
-    constructor(private http: HttpClient) {
-    }
+    constructor(private http: HttpClient) { }
 
     getAllCourses(): Observable<any> {
         return this.http.get<any>(`${this.API_PATH}`);

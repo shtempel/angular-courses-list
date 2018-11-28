@@ -62,7 +62,6 @@ button:hover {
 }
 
 .disabled {
-  border: none !important;
   pointer-events: none;
   color: $_color-Gray;
 }
@@ -84,4 +83,15 @@ button:hover {
 
 .error {
   color: $_color-alizarin-crimson;
+}
+
+input, textarea {
+  border-radius: $border-radius-small;
+  padding: $padding-small;
+  border: $border-base;
+}
+
+select.ng-invalid.ng-touched,
+input.ng-invalid.ng-touched {
+  border: $border-error;
 }

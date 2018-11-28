@@ -1,6 +1,6 @@
 import { coursesListComponents } from './courses-list';
+import { AddNewFormComponents } from './add-new-form';
 import { BreadcrumbsComponent } from './breadcrumbs';
-import { AddNewFormComponent} from './add-new-form';
 import { ToolPanelComponent } from './tool-panel';
 import { HeaderComponent } from './header';
 import { FooterComponent } from './footer';
@@ -8,10 +8,10 @@ import { IconComponent } from './icon';
 
 export const components = [
     ...coursesListComponents,
+    ...AddNewFormComponents,
     BreadcrumbsComponent,
-    AddNewFormComponent,
     ToolPanelComponent,
     FooterComponent,
     HeaderComponent,
-    IconComponent
+    IconComponent,
 ];
