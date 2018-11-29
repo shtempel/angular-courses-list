@@ -1,15 +1,18 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import * as moment from 'moment';
 
 import * as coursesActions from '../actions/courses';
 import { ICourseItem } from '../../app/models';
 
 export interface CoursesState {
     items: ICourseItem[];
+    item: ICourseItem;
     isFetching: boolean;
 }
 
 export const initialState: CoursesState = {
     items: [],
+    item: null,
     isFetching: false,
 };
 
@@ -34,6 +37,37 @@ export function reducer(state = initialState, action: coursesActions.CoursesActi
             return {
                 ...state,
                 items: action.payload,
+                isFetching: false
+            };
+        }
+
+        case coursesActions.FETCH_COURSE_BY_ID: {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
+
+        case coursesActions.FETCH_COURSE_BY_ID_FAIL: {
+            return {
+                ...state,
+                isFetching: false
+            };
+        }
+
+        case coursesActions.FETCH_COURSE_BY_ID_SUCCESS: {
+            action.payload = {
+                id: action.payload.id,
+                title: action.payload.name,
+                duration: action.payload.length,
+                releaseDate: moment(action.payload.date).format('YYYY-MM-DD'),
+                authors: action.payload.authors,
+                description: action.payload.description,
+                topRated: action.payload.isTopRated
+            };
+            return {
+                ...state,
+                item: action.payload,
                 isFetching: false
             };
         }
@@ -82,4 +116,9 @@ export const getCoursesState = createFeatureSelector<CoursesState>(
 export const getCourses = createSelector(
     getCoursesState,
     (state: CoursesState) => state.items
+);
+
+export const getCourse = createSelector(
+    getCoursesState,
+    (state: CoursesState) => state.item
 );

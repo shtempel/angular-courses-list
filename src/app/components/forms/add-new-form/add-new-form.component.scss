@@ -1,5 +1,5 @@
-@import './../../../styles/variables';
-@import './../../../styles/colors';
+@import '../../../../styles/variables';
+@import '../../../../styles/colors';
 
 .add-new-form {
   padding: $padding-base;
@@ -12,7 +12,7 @@
     button {
       border-radius: $padding-small;
       padding: $padding-small;
-      border: $border-base;
+      border: $border-outer;
       width: 6rem;
     }
 

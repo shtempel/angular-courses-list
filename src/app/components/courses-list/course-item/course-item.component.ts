@@ -39,6 +39,10 @@ export class CourseItemComponent implements OnInit {
         this.border = utils.styleHelper.setBorder('dateRange', this.courseItem.releaseDate);
     }
 
+    editCourse() {
+        this.coursesStore.dispatch(new actions.FetchCourseById(this.courseItem.id));
+    }
+
     deleteCourse() {
         if (confirm(this.assets.deleteConf + _.toUpper(this.courseItem.title) + '?')) {
             this.coursesStore.dispatch(new actions.FetchCourseDelete(this.courseItem.id));

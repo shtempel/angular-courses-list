@@ -14,7 +14,7 @@
         <span class="course-item__main__short__description">{{courseItem.description}}</span>
     </div>
     <div class="course-item__buttons row">
-        <span class="course-item__buttons__edit btn">{{assets.edit}}
+        <span class="course-item__buttons__edit btn" (click)="editCourse()" [routerLink]="['/course' , ':' + courseItem.id]">{{assets.edit}}
             <app-icon [className]="icons.classNameRegular" [iconType]="icons.editIcon"></app-icon>
         </span>
         <span class="course-item__buttons__del btn" (click)="deleteCourse($event)">{{assets.delete}}

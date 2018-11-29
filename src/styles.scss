@@ -36,10 +36,12 @@ body {
 }
 
 button {
+  border-radius: $border-radius-small;
   background-color: $_color-white;
 }
 
-.btn, a, img {
+.btn, a {
+  border-radius: $border-radius-small;
   text-decoration: none;
   color: $_color-black;
   text-align: center;
@@ -56,6 +58,7 @@ button:hover {
   background-color: $_color-Gray;
   color: $_color-white;
   outline: none;
+
   .icon {
     color: $_color-white;
   }
@@ -63,6 +66,7 @@ button:hover {
 
 .disabled {
   pointer-events: none;
+  border: none !important;
   color: $_color-Gray;
 }
 
@@ -92,6 +96,7 @@ input, textarea {
 }
 
 select.ng-invalid.ng-touched,
-input.ng-invalid.ng-touched {
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
   border: $border-error;
 }

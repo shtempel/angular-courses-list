@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import * as coursesActions from './../../../store/actions/courses';
@@ -21,6 +21,6 @@ export class CoursesListComponent implements OnInit {
 
     ngOnInit() {
         this.coursesStore.dispatch(new coursesActions.FetchCourses());
-        this.courses$ = this.coursesStore.select(getCourses);
+        this.courses$ = this.coursesStore.pipe(select(getCourses));
     }
 }

@@ -22,6 +22,7 @@ export enum errors {
 export enum buttonsNames {
     USER_LOGIN = 'User Login',
     ADD_COURSE = 'Add course',
+    UPDATE_COURSE = 'Update',
     USER_LOGOFF = 'Log off',
     LOAD_MORE = 'LOAD MORE',
     SEARCH = 'Search',

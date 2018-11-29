@@ -23,6 +23,7 @@
 
 <div [formGroup]="form" class="add-new-page__description column" *ngIf="type === 'description'">
     <label for="descriptionId">Description:</label>
+
     <div class="error"
          *ngIf="form.controls['description'].hasError('maxlength')
   && form.controls['description'].touched">
@@ -53,6 +54,12 @@
 <div [formGroup]="form" class="duration" *ngIf="type === 'duration'">
     <label for="durationId">Duration:</label>
     <div class="duration__value">
+
+        <div class="error"
+             *ngIf="form.controls['duration'].hasError('required') && form.controls['duration'].touched">
+            "Duration" {{errors.required}}
+        </div>
+
         <input id="durationId" type="number" formControlName="duration"/>
         <span class="doubled-duration">{{form.controls['duration'].value | courseDuration: duration}}</span>
     </div>

@@ -1,11 +1,11 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Store } from '@ngrx/store';
 
-import * as coursesActions from '../../../store/actions/courses';
-import * as assets from './../../../constants/_const';
-import { ICourseItem } from '../../models';
+import * as coursesActions from '../../../../store/actions/courses';
+import * as assets from '../../../../constants/_const';
+import { ICourseItem } from '../../../models';
 
 @Component({
     selector: 'app-add-new-form',

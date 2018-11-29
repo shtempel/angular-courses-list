@@ -1,6 +1,7 @@
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 import { of } from 'rxjs';
 
 import * as coursesActions from '../../store/actions/courses';
@@ -10,8 +11,9 @@ import * as fromServices from '../services/index';
 export class CoursesEffects {
 
     @Effect()
-    fetchingCourses$ = this.actions$.ofType(coursesActions.FETCHING_COURSES)
+    fetchingCourses$ = this.actions$
         .pipe(
+            ofType(coursesActions.FETCHING_COURSES),
             switchMap(() => {
                 return this.coursesService.getAllCourses()
                     .pipe(
@@ -24,7 +26,7 @@ export class CoursesEffects {
                                     releaseDate: course.date,
                                     authors: course.authors,
                                     description: course.description,
-                                    topRated: course.isTopRated,
+                                    topRated: course.isTopRated
                                 };
                             }
                         ))),
@@ -33,8 +35,21 @@ export class CoursesEffects {
         );
 
     @Effect()
-    deleteCourse$ = this.actions$.ofType(coursesActions.FETCH_COURSE_DELETE)
+    fetchCourseById$ = this.actions$
         .pipe(
+            ofType(coursesActions.FETCH_COURSE_BY_ID),
+            switchMap((action: coursesActions.FetchCourseById) => {
+                return this.coursesService.getCourseById(action.payload)
+                    .pipe(
+                        map(course => new coursesActions.FetchCourseByIdSuccess(course))
+                    );
+            }),
+            catchError(error => of(new coursesActions.FetchCourseByIdFail(error))));
+
+    @Effect()
+    deleteCourse$ = this.actions$
+        .pipe(
+            ofType(coursesActions.FETCH_COURSE_DELETE),
             switchMap((action: coursesActions.FetchCourseDelete) => {
                 return this.coursesService.deleteCourseById(action.payload)
                     .pipe(
@@ -46,8 +61,9 @@ export class CoursesEffects {
             catchError(error => of(new coursesActions.FetchCourseDeleteFail(error))));
 
     @Effect()
-    addCourse$ = this.actions$.ofType(coursesActions.FETCH_COURSE_ADD)
+    addCourse$ = this.actions$
         .pipe(
+            ofType(coursesActions.FETCH_COURSE_ADD),
             switchMap((action: coursesActions.FetchCourseAdd) => {
                 return this.coursesService.addCourse(action.payload)
                     .pipe(
@@ -57,6 +73,21 @@ export class CoursesEffects {
                     );
             }),
             catchError(error => of(new coursesActions.FetchCourseAddFail(error))));
+
+
+    @Effect()
+    updateCourse$ = this.actions$
+        .pipe(
+            ofType(coursesActions.FETCH_COURSE_UPDATE),
+            switchMap((action: coursesActions.FetchCourseUpdate) => {
+                return this.coursesService.updateCourseById(action.payload.id, action.payload.course)
+                    .pipe(
+                        map(() => {
+                            return new coursesActions.FetchCourseUpdateSuccess(action.payload.id);
+                        })
+                    );
+            }),
+            catchError(error => of(new coursesActions.FetchCourseUpdateFail(error))));
 
     constructor(private actions$: Actions, private coursesService: fromServices.CoursesService) {
 

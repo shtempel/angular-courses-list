@@ -1,6 +1,7 @@
 import * as appActions from '../actions/app';
 
 const initialState = {
+    isEditForm: false,
     isAuthorized: true,
     isRegOpen: false
 };
@@ -19,6 +20,13 @@ export function reducer(state = initialState, action: appActions.AppActions) {
             return {
                 ...state,
                 isRegOpen: action.payload.status
+            };
+        }
+
+        case appActions.SET_EDIT_FORM_STATE: {
+            return {
+                ...state,
+                isEditForm: action.payload
             };
         }
 

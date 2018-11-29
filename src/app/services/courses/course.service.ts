@@ -19,7 +19,15 @@ export class CoursesService {
         return this.http.delete<any>(`${this.API_PATH}/${id}`);
     }
 
+    getCourseById(id: number): Observable<{}> {
+        return this.http.get<any>(`${this.API_PATH}/${id}`);
+    }
+
     addCourse(course: any) {
         return this.http.post<any>(`${this.API_PATH}`, course);
+    }
+
+    updateCourseById(id: number, course): Observable<{}> {
+        return this.http.put<any>(`${this.API_PATH}/${id}`, course);
     }
 }

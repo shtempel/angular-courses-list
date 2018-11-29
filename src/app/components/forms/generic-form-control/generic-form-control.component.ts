@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as assets from '../../../../constants/_const';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-generic-form-control',
@@ -8,7 +9,6 @@ import * as assets from '../../../../constants/_const';
 })
 export class GenericFormControlComponent implements OnInit {
     @Input() form: string;
-    @Input() className: string;
     @Input() type: string;
     errors = {
         maxNameLength: assets.errors.MAX_LENGTH + 50,
