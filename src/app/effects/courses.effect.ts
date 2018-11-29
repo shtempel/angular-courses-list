@@ -1,7 +1,6 @@
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
-import * as moment from 'moment';
 import { of } from 'rxjs';
 
 import * as coursesActions from '../../store/actions/courses';
@@ -89,7 +88,5 @@ export class CoursesEffects {
             }),
             catchError(error => of(new coursesActions.FetchCourseUpdateFail(error))));
 
-    constructor(private actions$: Actions, private coursesService: fromServices.CoursesService) {
-
-    }
+    constructor(private actions$: Actions, private coursesService: fromServices.CoursesService) { }
 }
