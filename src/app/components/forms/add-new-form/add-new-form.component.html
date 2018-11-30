@@ -1,10 +1,10 @@
 <form [formGroup]="courseForm" (ngSubmit)="save(courseForm.value)">
     <div class="add-new-form column">
-        <app-generic-form-control [form]="courseForm" type="title"></app-generic-form-control>
-        <app-generic-form-control [form]="courseForm" type="description"></app-generic-form-control>
-        <app-generic-form-control [form]="courseForm" type="date"></app-generic-form-control>
-        <app-generic-form-control [form]="courseForm" type="duration"></app-generic-form-control>
-        <app-generic-form-control [form]="courseForm" type="authors"></app-generic-form-control>
+        <app-title-input [form]="courseForm" [errors]="errors"></app-title-input>
+        <app-description-input [form]="courseForm" [errors]="errors"></app-description-input>
+        <app-date-input [form]="courseForm" [errors]="errors"></app-date-input>
+        <app-duration-input [form]="courseForm" [errors]="errors"></app-duration-input>
+        <app-authors-input [form]="courseForm" [errors]="errors"></app-authors-input>
         <div class="add-new-form__buttons">
             <button class="btn" [ngClass]="{'disabled': !courseForm.valid}" [disabled]="!courseForm.valid">
                 {{assets.save}}

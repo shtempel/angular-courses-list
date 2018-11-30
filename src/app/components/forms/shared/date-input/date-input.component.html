@@ -1,0 +1,12 @@
+<div [formGroup]="form" class="date">
+  <div class="add-new-page__date column">
+    <label for="dateId">Date:</label>
+
+    <div class="error"
+         *ngIf="form.controls['date'].hasError('required') && form.controls['date'].touched">
+      "Date" {{errors.required}}
+    </div>
+
+    <input id="dateId" type="date" max="2199-12-31" formControlName="date"/>
+  </div>
+</div>

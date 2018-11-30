@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenericFormControlComponent } from './generic-form-control.component';
+import { TitleInputComponent } from './title-input.component';
 
-describe('GenericFormControlComponent', () => {
-  let component: GenericFormControlComponent;
-  let fixture: ComponentFixture<GenericFormControlComponent>;
+describe('TitleInputComponent', () => {
+  let component: TitleInputComponent;
+  let fixture: ComponentFixture<TitleInputComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenericFormControlComponent ]
+      declarations: [ TitleInputComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GenericFormControlComponent);
+    fixture = TestBed.createComponent(TitleInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

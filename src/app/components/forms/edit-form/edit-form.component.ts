@@ -22,7 +22,12 @@ export class EditFormComponent implements OnInit {
         cancel: assets.buttonsNames.CANCEL,
         update: assets.buttonsNames.UPDATE_COURSE
     };
-
+    errors = {
+        maxNameLength: assets.errors.MAX_LENGTH + 50,
+        minNameLength: assets.errors.MIN_LENGTH + 3,
+        maxDescriptionLength: assets.errors.MAX_LENGTH + 500,
+        required: assets.errors.REQUIRED_FIELD
+    };
     constructor(
         private coursesStore: Store<ICourseItem>,
         private location: Location,

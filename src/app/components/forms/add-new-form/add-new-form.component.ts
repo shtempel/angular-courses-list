@@ -18,7 +18,12 @@ export class AddNewFormComponent implements OnInit {
         cancel: assets.buttonsNames.CANCEL,
         save: assets.buttonsNames.SAVE
     };
-
+    errors = {
+        maxNameLength: assets.errors.MAX_LENGTH + 50,
+        minNameLength: assets.errors.MIN_LENGTH + 3,
+        maxDescriptionLength: assets.errors.MAX_LENGTH + 500,
+        required: assets.errors.REQUIRED_FIELD
+    };
     constructor(
         private coursesStore: Store<ICourseItem>,
         private location: Location,
