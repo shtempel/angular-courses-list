@@ -2,18 +2,28 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as moment from 'moment';
 
 import * as coursesActions from '../actions/courses';
-import { ICourseItem } from '../../app/models';
+import { IAuthor, ICourseItem } from '../../app/models';
 
 export interface CoursesState {
     items: ICourseItem[];
     item: ICourseItem;
     isFetching: boolean;
+    authorsToUpdate: IAuthor[];
 }
 
 export const initialState: CoursesState = {
     items: [],
-    item: null,
+    item: {
+        id: null,
+        title: null,
+        duration: null,
+        releaseDate: null,
+        authors: [],
+        description: null,
+        topRated: null
+    },
     isFetching: false,
+    authorsToUpdate: [{id: 2, firstName: 'Alex', lastName: 'Orlov'}]
 };
 
 export function reducer(state = initialState, action: coursesActions.CoursesActions): CoursesState {
@@ -72,6 +82,23 @@ export function reducer(state = initialState, action: coursesActions.CoursesActi
             };
         }
 
+        case coursesActions.RESET_CURRENT_COURSE: {
+            return {
+                ...state,
+                item: {
+                    id: null, title: null, duration: null, releaseDate: null, authors: null, description: null, topRated: null
+                }
+            };
+        }
+
+        case coursesActions.SET_AUTHORS: {
+            console.log(action.payload);
+            return {
+                ...state,
+                authorsToUpdate: [{id: 2, firstName: 'Alex', lastName: 'Orlov'}]
+            };
+        }
+
         case coursesActions.FETCH_COURSE_DELETE_SUCCESS: {
             return {
                 ...state,
@@ -121,4 +148,14 @@ export const getCourses = createSelector(
 export const getCourse = createSelector(
     getCoursesState,
     (state: CoursesState) => state.item
+);
+
+export const getAuthors = createSelector(
+    getCoursesState,
+    (state: CoursesState) => state.item.authors
+);
+
+export const getAuthorsToUpdate = createSelector(
+    getCoursesState,
+    (state: CoursesState) => state.authorsToUpdate
 );

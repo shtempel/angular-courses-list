@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,12 +6,8 @@ import { Router } from '@angular/router';
     templateUrl: './breadcrumbs.component.html',
     styleUrls: ['./breadcrumbs.component.scss']
 })
-export class BreadcrumbsComponent implements OnInit {
+export class BreadcrumbsComponent {
     currentLocation = this.router.url;
 
-    constructor(private router: Router) {
-    }
-
-    ngOnInit() {
-    }
+    constructor(private router: Router) {}
 }

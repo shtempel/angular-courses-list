@@ -45,7 +45,6 @@ button {
   text-decoration: none;
   color: $_color-black;
   text-align: center;
-  cursor: pointer;
 }
 
 a:visited {
@@ -80,19 +79,26 @@ button:hover {
 }
 
 .fav-icon-rated,
-.fav-icon:hover {
+.fav-icon:hover,
+.icon:hover {
   color: $_color-black;
-  cursor: pointer;
 }
 
 .error {
   color: $_color-alizarin-crimson;
 }
 
+.btn, a, label,
+.fav-icon-rated,
+.fav-icon:hover, .icon {
+  cursor: pointer;
+}
+
 input, textarea {
   border-radius: $border-radius-small;
   padding: $padding-small;
   border: $border-base;
+  resize: none;
 }
 
 select.ng-invalid.ng-touched,

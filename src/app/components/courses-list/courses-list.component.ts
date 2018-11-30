@@ -16,8 +16,7 @@ export class CoursesListComponent implements OnInit {
     public courses$: Observable<ICourseItem[]>;
     emptyListMessage = assets.common.NO_DATA;
 
-    constructor(private coursesStore: Store<ICourseItem>) {
-    }
+    constructor(private coursesStore: Store<ICourseItem>) { }
 
     ngOnInit() {
         this.coursesStore.dispatch(new coursesActions.FetchCourses());

@@ -1,5 +1,5 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Store } from '@ngrx/store';
 
@@ -24,6 +24,7 @@ export class AddNewFormComponent implements OnInit {
         maxDescriptionLength: assets.errors.MAX_LENGTH + 500,
         required: assets.errors.REQUIRED_FIELD
     };
+
     constructor(
         private coursesStore: Store<ICourseItem>,
         private location: Location,
@@ -53,6 +54,10 @@ export class AddNewFormComponent implements OnInit {
         }
     }
 
+    resetCurrentCourse() {
+        this.coursesStore.dispatch(new coursesActions.ResetCurrentCourse);
+    }
+
     createForm(): void {
         this.courseForm = this.fb.group({
             title: [null, Validators.compose(
@@ -71,7 +76,8 @@ export class AddNewFormComponent implements OnInit {
                     Validators.required,
                     Validators.pattern(/^[0-9]*$/)]),
             ],
-            date: [null, [Validators.required]]
+            date: [null, [Validators.required]],
+            authors: [null]
         });
     }
 }

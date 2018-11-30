@@ -1,12 +1,11 @@
-import { ICourseItem } from './course-item';
-import { IMovieItem } from './movie-item';
+import { ICourseItem, IAuthor } from './course-item';
 import { User } from './user';
 import { App } from './app';
 import {Auth} from './auth';
 
 export {
-    IMovieItem,
     ICourseItem,
+    IAuthor,
     User,
     Auth,
     App

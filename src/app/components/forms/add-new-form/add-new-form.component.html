@@ -9,7 +9,7 @@
             <button class="btn" [ngClass]="{'disabled': !courseForm.valid}" [disabled]="!courseForm.valid">
                 {{assets.save}}
             </button>
-            <button class="btn" routerLink="/courses">{{assets.cancel}}</button>
+            <button class="btn" routerLink="/courses" (click)="resetCurrentCourse()">{{assets.cancel}}</button>
         </div>
     </div>
 </form>

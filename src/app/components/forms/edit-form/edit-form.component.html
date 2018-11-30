@@ -9,7 +9,7 @@
             <button class="btn" [ngClass]="{'disabled': !editForm.valid}" [disabled]="!editForm.valid">
                 {{assets.update}}
             </button>
-            <button class="btn" routerLink="/courses">{{assets.cancel}}</button>
+            <button class="btn" routerLink="/courses" (click)="resetCurrentCourse()">{{assets.cancel}}</button>
         </div>
     </div>
 </form>

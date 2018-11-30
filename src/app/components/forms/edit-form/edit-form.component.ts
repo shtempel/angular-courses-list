@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { select, Store } from '@ngrx/store';
 
 import * as coursesActions from '../../../../store/actions/courses';
-import { getCourse } from '../../../../store/reducers/courses';
+import { getAuthors, getAuthorsToUpdate, getCourse } from '../../../../store/reducers/courses';
 import * as assets from '../../../../constants/_const';
 import { ICourseItem } from '../../../models';
 import { Observable } from 'rxjs';
@@ -18,6 +18,7 @@ export class EditFormComponent implements OnInit {
     public course$: Observable<ICourseItem>;
     editForm: FormGroup;
     courseId;
+    courseAuthors;
     assets = {
         cancel: assets.buttonsNames.CANCEL,
         update: assets.buttonsNames.UPDATE_COURSE
@@ -28,6 +29,7 @@ export class EditFormComponent implements OnInit {
         maxDescriptionLength: assets.errors.MAX_LENGTH + 500,
         required: assets.errors.REQUIRED_FIELD
     };
+
     constructor(
         private coursesStore: Store<ICourseItem>,
         private location: Location,
@@ -35,11 +37,17 @@ export class EditFormComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.coursesStore.pipe(select(getAuthorsToUpdate))
+            .subscribe(res => {
+                this.courseAuthors = res;
+            });
+
         this.course$ = this.coursesStore.pipe(select(getCourse));
         this.course$.subscribe(res => {
             if (res) {
                 this.createForm(res);
                 this.courseId = res.id;
+
             }
         });
     }
@@ -59,12 +67,17 @@ export class EditFormComponent implements OnInit {
                         name: formData.title,
                         description: formData.description,
                         length: formData.duration,
-                        date: formData.date
+                        date: formData.date,
+                        authors:  this.courseAuthors
                     }
                 }
             ));
             this.location.back();
         }
+    }
+
+    resetCurrentCourse() {
+        this.coursesStore.dispatch(new coursesActions.ResetCurrentCourse);
     }
 
     createForm(course: ICourseItem): void {
@@ -85,7 +98,8 @@ export class EditFormComponent implements OnInit {
                     Validators.required,
                     Validators.pattern(/^[0-9]*$/)]),
             ],
-            date: [course.releaseDate, [Validators.required]]
+            date: [course.releaseDate, [Validators.required]],
+            authors: [null]
         });
     }
 }
