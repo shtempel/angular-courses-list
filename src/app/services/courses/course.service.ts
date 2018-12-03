@@ -6,13 +6,16 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class CoursesService {
-
     private API_PATH = 'http://localhost:3004/courses';
 
     constructor(private http: HttpClient) { }
 
-    getAllCourses(): Observable<any> {
-        return this.http.get<any>(`${this.API_PATH}`);
+    getAllCourses(limit): Observable<any> {
+        return this.http.get<any>(`${this.API_PATH}`, {
+            params: {
+                _limit: limit
+            }
+        });
     }
 
     searchCourses(query: any): Observable<any> {

@@ -13,8 +13,8 @@ export class CoursesEffects {
     fetchingCourses$ = this.actions$
         .pipe(
             ofType(coursesActions.FETCHING_COURSES),
-            switchMap(() => {
-                return this.coursesService.getAllCourses()
+            switchMap((action: coursesActions.FetchCourses) => {
+                return this.coursesService.getAllCourses(action.payload.limit)
                     .pipe(
                         map(courses => new coursesActions.FetchCoursesSuccess(courses.map(
                             course => {

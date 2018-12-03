@@ -1,4 +1,9 @@
+import { PaginationActions } from './pagination';
 import { CoursesActions } from './courses';
 import { AppActions } from './app';
 
-export { CoursesActions, AppActions };
+export {
+    PaginationActions,
+    CoursesActions,
+    AppActions
+};

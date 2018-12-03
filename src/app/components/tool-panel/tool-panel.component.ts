@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import * as coursesActions from '../../../store/actions/courses';
 import { buttonsNames, common } from '../../../constants/_const';
-import { ICourseItem } from '../../models';
+import * as models from '../../models';
 
 @Component({
     selector: 'app-tool-panel',
@@ -25,7 +25,7 @@ export class ToolPanelComponent {
         searchBtnTitle: buttonsNames.SEARCH
     };
 
-    constructor(private coursesStore: Store<ICourseItem>) { }
+    constructor(private coursesStore: Store<models.ICourseItem>) { }
 
     onKeyUp(event: any) {
         this.inputValue = event.target.value;

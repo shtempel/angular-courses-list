@@ -43,6 +43,8 @@ export const SET_RATING = 'SET_RATING';
 // Action creators
 export class FetchCourses implements Action {
     readonly type = FETCHING_COURSES;
+
+    constructor(public payload: { limit: number }) { }
 }
 
 export class FetchCoursesSuccess implements Action {

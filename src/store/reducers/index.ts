@@ -4,6 +4,7 @@ import { routerReducer } from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { MetaReducer } from '@ngrx/store';
 
+import * as fromPagination from './pagination';
 import * as fromCourses from './courses';
 import * as fromAuth from './auth';
 import * as fromApp from './app';
@@ -12,7 +13,8 @@ export const reducers = {
     app: fromApp.reducer,
     auth: fromAuth.reducer,
     router: routerReducer,
-    courses: fromCourses.reducer
+    courses: fromCourses.reducer,
+    pagination: fromPagination.reducer
 };
 
 export const metaReducers: MetaReducer<{}>[] =
