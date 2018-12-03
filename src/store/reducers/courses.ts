@@ -2,12 +2,13 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as moment from 'moment';
 
 import * as coursesActions from '../actions/courses';
-import { IAuthor, ICourseItem } from '../../app/models';
+import { ICourseItem } from '../../app/models';
 
 export interface CoursesState {
     items: ICourseItem[];
     item: ICourseItem;
     isFetching: boolean;
+    searchString: string;
 }
 
 export const initialState: CoursesState = {
@@ -21,7 +22,8 @@ export const initialState: CoursesState = {
         description: null,
         topRated: null
     },
-    isFetching: false
+    isFetching: false,
+    searchString: ''
 };
 
 export function reducer(state = initialState, action: coursesActions.CoursesActions): CoursesState {
@@ -90,17 +92,24 @@ export function reducer(state = initialState, action: coursesActions.CoursesActi
         }
 
         case coursesActions.SET_AUTHORS: {
+            // const auth = {
+            //     id: action.payload.author.id * 1,
+            //     firstName: action.payload.author.name,
+            //     lastName: ''
+            // };
             return {
                 ...state,
-                item: {...state.item, authors: action.payload}
+                item: {
+                    ...state.item,
+                    authors: [ ...state.item.authors, action.payload]
+                }
             };
         }
 
         case coursesActions.REMOVE_AUTHOR: {
-            const authors: IAuthor[] = state.item.authors.filter((author: IAuthor) => author.id !== action.payload);
             return {
                 ...state,
-                item: {...state.item, authors: authors}
+                item: {...state.item, authors: state.item.authors.filter((author) => author.id !== action.payload)}
             };
         }
 

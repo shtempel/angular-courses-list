@@ -2,17 +2,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
+import { getAuthors, getCourse } from '../../../../store/reducers/courses';
 import * as coursesActions from '../../../../store/actions/courses';
-import { getAuthors, getAuthorsToUpdate, getCourse } from '../../../../store/reducers/courses';
+import * as authorsService from '../../../services/authors';
 import * as assets from '../../../../constants/_const';
 import { ICourseItem } from '../../../models';
-import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-edit-form',
     templateUrl: './edit-form.component.html',
-    styleUrls: ['./edit-form.component.scss']
+    styleUrls: [ './edit-form.component.scss' ]
 })
 export class EditFormComponent implements OnInit {
     public course$: Observable<ICourseItem>;
@@ -37,7 +38,7 @@ export class EditFormComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.coursesStore.pipe(select(getAuthorsToUpdate))
+        this.coursesStore.pipe(select(getAuthors))
             .subscribe(res => {
                 this.courseAuthors = res;
             });
@@ -47,16 +48,15 @@ export class EditFormComponent implements OnInit {
             if (res) {
                 this.createForm(res);
                 this.courseId = res.id;
-
             }
         });
     }
 
-    updateCourse(id: number, formData: any): void {
+    updateCourse(id?: number, formData?: any): void {
         const controls = this.editForm.controls;
 
         Object.keys(controls).forEach(key => {
-            controls[key].markAsTouched();
+            controls[ key ].markAsTouched();
         });
 
         if (formData) {
@@ -68,7 +68,7 @@ export class EditFormComponent implements OnInit {
                         description: formData.description,
                         length: formData.duration,
                         date: formData.date,
-                        authors:  this.courseAuthors
+                        authors: this.courseAuthors
                     }
                 }
             ));
@@ -82,24 +82,24 @@ export class EditFormComponent implements OnInit {
 
     createForm(course: ICourseItem): void {
         this.editForm = this.fb.group({
-            title: [course.title, Validators.compose(
+            title: [ course.title, Validators.compose(
                 [
                     Validators.required,
                     Validators.maxLength(50),
                     Validators.minLength(3)
-                ])],
-            description: [course.description, Validators.compose(
+                ]) ],
+            description: [ course.description, Validators.compose(
                 [
                     Validators.required,
                     Validators.maxLength(500)
-                ])],
-            duration: [course.duration, Validators.compose(
+                ]) ],
+            duration: [ course.duration, Validators.compose(
                 [
                     Validators.required,
-                    Validators.pattern(/^[0-9]*$/)]),
+                    Validators.pattern(/^[0-9]*$/) ]),
             ],
-            date: [course.releaseDate, [Validators.required]],
-            authors: [null]
+            date: [ course.releaseDate, [ Validators.required ] ],
+            authors: [ null ]
         });
     }
 }

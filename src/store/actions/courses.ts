@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { ICourseItem } from '../../app/models';
+import { IAuthor, ICourseItem } from '../../app/models';
 
 // Actions
 
@@ -24,13 +24,13 @@ export const FETCH_COURSE_UPDATE_SUCCESS = 'FETCH_COURSE_UPDATE_SUCCESS';
 export const FETCH_COURSE_UPDATE_FAIL = 'FETCH_COURSE_UPDATE_FAIL';
 export const FETCH_COURSE_UPDATE = 'FETCH_COURSE_UPDATE';
 
-
 // Add new course
 export const FETCH_COURSE_ADD_SUCCESS = 'FETCH_COURSE_ADD_SUCCESS';
 export const FETCH_COURSE_ADD_FAIL = 'FETCH_COURSE_ADD_FAIL';
 export const FETCH_COURSE_ADD = 'FETCH_COURSE_ADD';
 
 export const RESET_CURRENT_COURSE = 'RESET_CURRENT_COURSE';
+export const REMOVE_AUTHOR = 'REMOVE_AUTHOR';
 export const SET_AUTHORS = 'SET_AUTHORS';
 
 // Action creators
@@ -128,7 +128,13 @@ export class FetchCourseUpdateFail implements Action {
 export class SetAuthors implements Action {
     readonly type = SET_AUTHORS;
 
-    constructor(public payload: any) {}
+    constructor(public payload: any) { }
+}
+
+export class RemoveAuthor implements Action {
+    readonly type = REMOVE_AUTHOR;
+
+    constructor(public payload: any) { }
 }
 
 export class ResetCurrentCourse implements Action {
@@ -143,6 +149,7 @@ export type CoursesActions =
 
     ResetCurrentCourse |
     SetAuthors |
+    RemoveAuthor |
 
     FetchCourseUpdateSuccess |
     FetchCourseUpdateFail |

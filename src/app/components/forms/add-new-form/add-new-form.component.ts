@@ -1,11 +1,12 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 
 import * as coursesActions from '../../../../store/actions/courses';
 import * as assets from '../../../../constants/_const';
 import { ICourseItem } from '../../../models';
+import { getAuthors } from '../../../../store/reducers/courses';
 
 @Component({
     selector: 'app-add-new-form',
@@ -14,6 +15,7 @@ import { ICourseItem } from '../../../models';
 })
 export class AddNewFormComponent implements OnInit {
     courseForm: FormGroup;
+    courseAuthors;
     assets = {
         cancel: assets.buttonsNames.CANCEL,
         save: assets.buttonsNames.SAVE
@@ -32,6 +34,10 @@ export class AddNewFormComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.coursesStore.pipe(select(getAuthors))
+            .subscribe(res => {
+                this.courseAuthors = res;
+            });
         this.createForm();
     }
 
@@ -47,7 +53,8 @@ export class AddNewFormComponent implements OnInit {
                     name: formData.title,
                     description: formData.description,
                     length: formData.duration,
-                    date: formData.date
+                    date: formData.date,
+                    authors: this.courseAuthors
                 }
             ));
             this.location.back();

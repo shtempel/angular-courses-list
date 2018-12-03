@@ -1,13 +1,19 @@
 <div [formGroup]="form">
     <div class="add-new-page__authors column">
         <label for="authorsId">Authors:</label>
-        <input id="authorsId" formControlName="authors"/>
+        <!--<input id="authorsId" (keydown)="searchAuthors()" formControlName="authors" [(ngModel)]="query"/>-->
+        <input id="authorsId" (keyup)="searchAuthors()" formControlName="authors" [(ngModel)]="query"/>
+        <div class="searched-authors column" *ngIf="autocompleteAuthors">
+            <span *ngFor="let author1 of autocompleteAuthors">
+                <span (click)="addAuthor(author1)" class="name-pallet btn">{{author1.firstName}}</span>
+            </span>
+        </div>
     </div>
     <div *ngIf="authors" class="row authors">
         <div class="row author-item" *ngFor="let author of authors">
             <span>{{author.firstName}}</span>
             <span>{{author.lastName}}</span>
-            <app-icon [className]="styles.icon" (click)="log()" [iconType]="cross"></app-icon>
+            <app-icon [className]="styles.icon" (click)="removeAuthor(author)" [iconType]="cross"></app-icon>
         </div>
     </div>
 </div>

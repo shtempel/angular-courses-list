@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faTrashAlt, faEdit, faStar } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import * as _ from 'lodash';
@@ -20,7 +20,6 @@ export class CourseItemComponent implements OnInit {
     }
 
     @Input() public courseItem: models.ICourseItem;
-    @Output() deleteItem: EventEmitter<string> = new EventEmitter<string>();
     border;
     icons = {
         trashIcon: faTrashAlt,
