@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { IAuthor, ICourseItem } from '../../app/models';
+import { ICourseItem } from '../../app/models';
 
 // Actions
 
@@ -29,9 +29,16 @@ export const FETCH_COURSE_ADD_SUCCESS = 'FETCH_COURSE_ADD_SUCCESS';
 export const FETCH_COURSE_ADD_FAIL = 'FETCH_COURSE_ADD_FAIL';
 export const FETCH_COURSE_ADD = 'FETCH_COURSE_ADD';
 
+// Searching
+export const FETCH_COURSE_SEARCH_SUCCESS = 'FETCH_COURSE_SEARCH_SUCCESS';
+export const FETCH_COURSE_SEARCH_FAIL = 'FETCH_COURSE_SEARCH_FAIL';
+export const FETCH_COURSE_SEARCH = 'FETCH_COURSE_SEARCH';
+
+// Common
 export const RESET_CURRENT_COURSE = 'RESET_CURRENT_COURSE';
 export const REMOVE_AUTHOR = 'REMOVE_AUTHOR';
 export const SET_AUTHORS = 'SET_AUTHORS';
+export const SET_RATING = 'SET_RATING';
 
 // Action creators
 export class FetchCourses implements Action {
@@ -106,6 +113,25 @@ export class FetchCourseAddFail implements Action {
     constructor(public payload: any) { }
 }
 
+export class FetchCourseSearch implements Action {
+    readonly type = FETCH_COURSE_SEARCH;
+
+    constructor(public payload: any) { }
+}
+
+export class FetchCourseSearchSuccess implements Action {
+    readonly type = FETCH_COURSE_SEARCH_SUCCESS;
+
+    constructor(public payload: ICourseItem[]) { }
+
+}
+
+export class FetchCourseSearchFail implements Action {
+    readonly type = FETCH_COURSE_SEARCH_FAIL;
+
+    constructor(public payload: any) { }
+}
+
 export class FetchCourseUpdate implements Action {
     readonly type = FETCH_COURSE_UPDATE;
 
@@ -131,6 +157,12 @@ export class SetAuthors implements Action {
     constructor(public payload: any) { }
 }
 
+export class SetRating implements Action {
+    readonly type = SET_RATING;
+
+    constructor(public payload: { id: number, status: boolean }) { }
+}
+
 export class RemoveAuthor implements Action {
     readonly type = REMOVE_AUTHOR;
 
@@ -139,7 +171,6 @@ export class RemoveAuthor implements Action {
 
 export class ResetCurrentCourse implements Action {
     readonly type = RESET_CURRENT_COURSE;
-
 }
 
 export type CoursesActions =
@@ -150,6 +181,7 @@ export type CoursesActions =
     ResetCurrentCourse |
     SetAuthors |
     RemoveAuthor |
+    SetRating |
 
     FetchCourseUpdateSuccess |
     FetchCourseUpdateFail |
@@ -165,4 +197,8 @@ export type CoursesActions =
 
     FetchCourseAddSuccess |
     FetchCourseAddFail |
-    FetchCourseAdd;
+    FetchCourseAdd |
+
+    FetchCourseSearchSuccess |
+    FetchCourseSearchFail |
+    FetchCourseSearch;

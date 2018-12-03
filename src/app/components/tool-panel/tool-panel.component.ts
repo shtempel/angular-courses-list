@@ -1,14 +1,17 @@
 import { faFileAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
 
+import * as coursesActions from '../../../store/actions/courses';
 import { buttonsNames, common } from '../../../constants/_const';
+import { ICourseItem } from '../../models';
 
 @Component({
     selector: 'app-tool-panel',
     templateUrl: './tool-panel.component.html',
     styleUrls: ['./tool-panel.component.scss']
 })
-export class ToolPanelComponent implements OnInit {
+export class ToolPanelComponent {
     inputValue = ' ';
     @Output() click: EventEmitter<string> = new EventEmitter<string>();
     icons = {
@@ -22,17 +25,13 @@ export class ToolPanelComponent implements OnInit {
         searchBtnTitle: buttonsNames.SEARCH
     };
 
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
+    constructor(private coursesStore: Store<ICourseItem>) { }
 
     onKeyUp(event: any) {
         this.inputValue = event.target.value;
     }
 
     onSearchClick() {
-
+        this.coursesStore.dispatch(new coursesActions.FetchCourseSearch(this.inputValue));
     }
 }

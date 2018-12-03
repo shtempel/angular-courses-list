@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 
 import { getAuthors, getCourse } from '../../../../store/reducers/courses';
 import * as coursesActions from '../../../../store/actions/courses';
-import * as authorsService from '../../../services/authors';
 import * as assets from '../../../../constants/_const';
 import { ICourseItem } from '../../../models';
 

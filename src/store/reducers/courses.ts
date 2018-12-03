@@ -51,6 +51,28 @@ export function reducer(state = initialState, action: coursesActions.CoursesActi
             };
         }
 
+        case coursesActions.FETCH_COURSE_SEARCH: {
+            return {
+                ...state,
+                isFetching: true
+            };
+        }
+
+        case coursesActions.FETCH_COURSE_SEARCH_FAIL: {
+            return {
+                ...state,
+                isFetching: false
+            };
+        }
+
+        case coursesActions.FETCH_COURSE_SEARCH_SUCCESS: {
+            return {
+                ...state,
+                items: action.payload,
+                isFetching: false
+            };
+        }
+
         case coursesActions.FETCH_COURSE_BY_ID: {
             return {
                 ...state,
@@ -92,16 +114,11 @@ export function reducer(state = initialState, action: coursesActions.CoursesActi
         }
 
         case coursesActions.SET_AUTHORS: {
-            // const auth = {
-            //     id: action.payload.author.id * 1,
-            //     firstName: action.payload.author.name,
-            //     lastName: ''
-            // };
             return {
                 ...state,
                 item: {
                     ...state.item,
-                    authors: [ ...state.item.authors, action.payload]
+                    authors: [...state.item.authors, action.payload]
                 }
             };
         }
@@ -110,6 +127,18 @@ export function reducer(state = initialState, action: coursesActions.CoursesActi
             return {
                 ...state,
                 item: {...state.item, authors: state.item.authors.filter((author) => author.id !== action.payload)}
+            };
+        }
+
+        case coursesActions.SET_RATING: {
+            return {
+                ...state,
+                items: [
+                    ...state.items.map(item => {
+                        return item.id === action.payload.id ?
+                            {...item, topRated: action.payload.status} : item;
+                    })
+                ]
             };
         }
 

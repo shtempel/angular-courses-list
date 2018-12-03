@@ -15,6 +15,10 @@ export class CoursesService {
         return this.http.get<any>(`${this.API_PATH}`);
     }
 
+    searchCourses(query: any): Observable<any> {
+        return this.http.get<any>(`${this.API_PATH}`, {params: {q: query}});
+    }
+
     deleteCourseById(id: number): Observable<{}> {
         return this.http.delete<any>(`${this.API_PATH}/${id}`);
     }
@@ -29,5 +33,10 @@ export class CoursesService {
 
     updateCourseById(id: number, course): Observable<{}> {
         return this.http.put<any>(`${this.API_PATH}/${id}`, course);
+    }
+
+    setTopRated(id: number, status: boolean): Observable<any> {
+        return this.http.put<any>(`${this.API_PATH}/${id}`,
+            {'isTopRated': status});
     }
 }
