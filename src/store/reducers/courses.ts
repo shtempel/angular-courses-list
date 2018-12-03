@@ -8,7 +8,6 @@ export interface CoursesState {
     items: ICourseItem[];
     item: ICourseItem;
     isFetching: boolean;
-    authorsToUpdate: IAuthor[];
 }
 
 export const initialState: CoursesState = {
@@ -22,8 +21,7 @@ export const initialState: CoursesState = {
         description: null,
         topRated: null
     },
-    isFetching: false,
-    authorsToUpdate: [{id: 2, firstName: 'Alex', lastName: 'Orlov'}]
+    isFetching: false
 };
 
 export function reducer(state = initialState, action: coursesActions.CoursesActions): CoursesState {
@@ -92,10 +90,17 @@ export function reducer(state = initialState, action: coursesActions.CoursesActi
         }
 
         case coursesActions.SET_AUTHORS: {
-            console.log(action.payload);
             return {
                 ...state,
-                authorsToUpdate: [{id: 2, firstName: 'Alex', lastName: 'Orlov'}]
+                item: {...state.item, authors: action.payload}
+            };
+        }
+
+        case coursesActions.REMOVE_AUTHOR: {
+            const authors: IAuthor[] = state.item.authors.filter((author: IAuthor) => author.id !== action.payload);
+            return {
+                ...state,
+                item: {...state.item, authors: authors}
             };
         }
 
@@ -153,9 +158,4 @@ export const getCourse = createSelector(
 export const getAuthors = createSelector(
     getCoursesState,
     (state: CoursesState) => state.item.authors
-);
-
-export const getAuthorsToUpdate = createSelector(
-    getCoursesState,
-    (state: CoursesState) => state.authorsToUpdate
 );
