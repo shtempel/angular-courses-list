@@ -1,13 +1,23 @@
 <div class="login column">
-    <div class="login__header">{{!isRegOpen ? assets.login : assets.registration}}</div>
-    <div class="login__user-name column">
-        <label for="loginName">{{assets.login}}<label class="error" *ngIf="isUserExist"> {{assets.errorMessage}}</label></label>
-        <input placeholder={{assets.loginPlaceHolder}} (keyup)="getLogin($event)" id="loginName">
-    </div>
-    <div class="login__user-pass column">
-        <label for="pass">{{assets.pass}}</label>
-        <input placeholder={{assets.passPlaceHolder}} (keyup)="getPass($event)" type="password" id="pass">
-    </div>
-    <div class="login__submit btn" (click)="manageUserActivity()">{{!isRegOpen ? assets.login : assets.registerUser}}</div>
-    <div class="login__reg" (click)="manageForms()">{{assets.registration}}</div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="login__header">{{assets.login}}</div>
+        <div class="login__error" *ngIf="wrongCredentials">Wrong credentials, try again</div>
+        <div class="login__user-name column">
+            <label for="login">{{assets.login}}</label>
+            <input [ngClass]="{'wrong-cred': wrongCredentials}"
+                   placeholder={{assets.loginPlaceHolder}}
+                   formControlName="login"
+                   id="login">
+        </div>
+        <div class="login__user-pass column">
+            <label for="pass">{{assets.pass}}</label>
+            <input [ngClass]="{'wrong-cred': wrongCredentials}"
+                   placeholder={{assets.passPlaceHolder}}
+                   formControlName="password"
+                   type="password"
+                   id="pass">
+        </div>
+        <button type="submit" class="login__submit btn"
+                [ngClass]="{'disabled': !loginForm.valid}">{{assets.login}}</button>
+    </form>
 </div>

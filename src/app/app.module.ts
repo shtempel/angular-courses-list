@@ -14,12 +14,14 @@ import { components } from './components';
 import { effects } from './effects';
 import { pages } from './pages';
 
+import { AuthResolver } from './services/auth/auth.resolver';
 import { metaReducers, reducers } from '../store/reducers';
 import { AuthGuard } from './services/auth/auth.guards';
 import { directives } from './directives';
 import * as utils from './../utils/index';
 import { ROUTES } from './app.routes';
 import { pipes } from './pipes';
+
 
 const declarations = [
     AppComponent,
@@ -45,7 +47,9 @@ const declarations = [
         }),
         StoreRouterConnectingModule.forRoot({stateKey: 'router'})
     ],
-    providers: [{provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer}
+    providers: [
+        {provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer},
+        AuthGuard, AuthResolver
     ],
     bootstrap: [AppComponent]
 })

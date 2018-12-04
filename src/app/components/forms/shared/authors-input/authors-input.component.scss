@@ -3,9 +3,11 @@
 
 .authors {
   margin-top: $margin-base-vertical;
+  flex-wrap: wrap;
 }
+
 .author-item {
-  margin-right: $margin-base-horizontal;
+  margin: 2px;
   border-radius: $border-radius-small;
   background-color: $_color-Loblolly;
   padding: $padding-small;
@@ -16,12 +18,16 @@
 }
 
 .searched-authors {
+  border-radius: $border-radius-small;
+  margin-top: $margin-small-vertical;
   padding: $padding-small;
   border: $border-base;
+  max-height: 200px;
+  overflow: auto;
+  max-width: 30%;
 }
 
 .name-pallet {
+  margin-top: 10px;
   padding: $padding-small;
 }
-
-.name-pallet:hover {}

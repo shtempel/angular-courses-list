@@ -1,55 +1,52 @@
+import { HttpClient } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as _ from 'lodash';
+import { Observable } from 'rxjs';
 
-import * as localStorageHelper from './../../../utils/localStorageHelper';
-import * as authActions from '../../../store/actions/auth';
 import * as appActions from './../../../store/actions/app';
-import * as models from '../../models';
+import { App } from '../../models';
+import { Router } from '@angular/router';
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
+    private API_PATH = 'http://localhost:3004/auth/login';
+    private LOGIN_LS_KEY = 'mch_login';
+    public isLoggedIn: boolean;
 
-    constructor(private  authStore: Store<models.Auth>, private appStore: Store<models.App>) {
-    }
+    constructor(
+        private  appStore: Store<App>,
+        private http: HttpClient,
+        private router: Router
+    ) { }
 
-    checkUserLoginName(loginName) {
-        const dataFromStorage = localStorageHelper.getInfoFromStorage('registeredUsers');
-        const data = dataFromStorage ? [ ...dataFromStorage ] : [];
-        return _.find(data, {loginName});
-    }
+    login(login: string, password: string) {
 
-    registerUser(loginName, password) {
-        const user: any = {
-            loginName,
+        return this.http.post(`${this.API_PATH}`, {
+            login,
             password
-        };
-
-        const dataFromStorage = localStorageHelper.getInfoFromStorage('registeredUsers');
-
-        const data = dataFromStorage ? [ ...dataFromStorage ] : [];
-        if (this.checkUserLoginName(loginName)) {
-            this.authStore.dispatch(new authActions.UserRegistrationFail());
-        } else {
-            data.push(user);
-            localStorageHelper.addInfoToStorage('registeredUsers', data);
-            this.authStore.dispatch(new authActions.UserRegistrationSuccess());
-            this.authStore.dispatch(new authActions.RegistrationErrorReset());
-            this.appStore.dispatch(new appActions.SetRegState({status: false}));
-        }
+        }).pipe(
+            map((res: Response) => {
+                    const user: any = res;
+                    localStorage.setItem(this.LOGIN_LS_KEY, user.token);
+                    this.setIsLoggedIn(true);
+                    return user.token;
+                },
+                catchError(error => Observable.throw(error.json()))
+            ));
     }
 
-    loginUser(login, password) {
-        const user = localStorageHelper.getInfoFromStorage('registeredUsers')
-            .filter(userData => userData.loginName === login);
+    logoff(): void {
+        localStorage.removeItem(this.LOGIN_LS_KEY);
+        this.setIsLoggedIn(false);
+        this.router.navigate(['/login']);
+    }
 
-        if (user[0].password === password) {
-            this.appStore.dispatch(new appActions.SetAuthState({status: true}));
-        }
+    private setIsLoggedIn(value: boolean): void {
+        this.isLoggedIn = value;
+        this.appStore.dispatch(new appActions.SetAuthState({status: value}));
     }
 }
-
-
-

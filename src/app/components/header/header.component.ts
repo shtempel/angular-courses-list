@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import * as appActions from '../../../store/actions/app';
 import { buttonsNames } from '../../../constants/_const';
+import { AuthService } from '../../services/auth';
 import { App } from '../../models';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-header',
@@ -13,27 +14,22 @@ import { App } from '../../models';
 export class HeaderComponent implements OnInit {
     authStatus;
     assets = {
-        login: buttonsNames.USER_LOGIN,
         logout: buttonsNames.USER_LOGOFF
     };
 
-    constructor(private  store: Store<App>) {
-    }
-
-    onLogin() {
-        this.setStatus(true);
-    }
+    constructor(
+        private authService: AuthService,
+        private appStore: Store<App>
+    ) { }
 
     onLogout() {
-        this.setStatus(false);
-    }
-
-    setStatus(status: boolean) {
-        this.store.dispatch(new appActions.SetAuthState({status: status}));
+        this.authService.logoff();
     }
 
     ngOnInit() {
-        this.authStatus = this.store.select('app');
-        this.authStatus.subscribe(status => this.authStatus = status.isAuthorized);
+        this.appStore.select('app')
+            .subscribe(
+                res => this.authStatus = res.isAuthorized
+            );
     }
 }

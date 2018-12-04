@@ -20,7 +20,6 @@ export class AuthorsService {
             .pipe(
                 map((res) => res.map(
                     author => {
-                        console.log(author);
                         return {
                             id: author.id,
                             firstName: author.name,

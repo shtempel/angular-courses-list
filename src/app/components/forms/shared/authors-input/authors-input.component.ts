@@ -24,7 +24,10 @@ export class AuthorsInputComponent implements OnInit {
         icon: 'icon'
     };
 
-    constructor(private coursesStore: Store<ICourseItem>, private authorsSer: authorsService.AuthorsService) { }
+    constructor(
+        private authorsSer: authorsService.AuthorsService,
+        private coursesStore: Store<ICourseItem>
+    ) { }
 
     ngOnInit() {
         this.coursesStore.pipe(select(getAuthors)).subscribe(
