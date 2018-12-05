@@ -9,5 +9,6 @@ import { Router } from '@angular/router';
 export class BreadcrumbsComponent {
     currentLocation = this.router.url;
 
-    constructor(private router: Router) {}
+    constructor(private router: Router) {
+    }
 }

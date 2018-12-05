@@ -16,19 +16,7 @@ export class CoursesEffects {
             switchMap((action: coursesActions.FetchCourses) => {
                 return this.coursesService.getAllCourses(action.payload.limit)
                     .pipe(
-                        map(courses => new coursesActions.FetchCoursesSuccess(courses.map(
-                            course => {
-                                return {
-                                    id: course.id,
-                                    title: course.name,
-                                    duration: course.length,
-                                    releaseDate: course.date,
-                                    authors: course.authors,
-                                    description: course.description,
-                                    topRated: course.isTopRated
-                                };
-                            }
-                        ))),
+                        map(courses => new coursesActions.FetchCoursesSuccess(courses)),
                         catchError(error => of(new coursesActions.FetchCoursesFail(error))));
             })
         );
@@ -40,19 +28,7 @@ export class CoursesEffects {
             switchMap((action: coursesActions.FetchCourseSearch) => {
                 return this.coursesService.searchCourses(action.payload)
                     .pipe(
-                        map(courses => new coursesActions.FetchCourseSearchSuccess(courses.map(
-                            course => {
-                                return {
-                                    id: course.id,
-                                    title: course.name,
-                                    duration: course.length,
-                                    releaseDate: course.date,
-                                    authors: course.authors,
-                                    description: course.description,
-                                    topRated: course.isTopRated
-                                };
-                            }
-                        ))),
+                        map(courses => new coursesActions.FetchCourseSearchSuccess(courses)),
                         catchError(error => of(new coursesActions.FetchCourseSearchFail(error))));
             })
         );

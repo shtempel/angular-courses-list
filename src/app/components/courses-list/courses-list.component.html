@@ -1,6 +1,6 @@
 <div class="list">
     <div class="list__list-with=items" *ngIf="courses$">
-        <app-course-item *ngFor="let course of courses$ | async | orderByDate: date" [courseItem]="course">
+        <app-course-item *ngFor="let course of courses$ | async | orderByDate: releaseDate" [courseItem]="course">
         </app-course-item>
         <app-load-more></app-load-more>
     </div>

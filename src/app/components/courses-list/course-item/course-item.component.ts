@@ -47,7 +47,7 @@ export class CourseItemComponent implements OnInit {
 
     setRating() {
         const state = !this.courseItem.topRated;
-        this.courseService.setTopRated(this.courseItem.id, state)
+        this.courseService.setTopRated({...this.courseItem, topRated: state})
             .subscribe(
                 () => {
                     this.coursesStore.dispatch(new actions.SetRating({id: this.courseItem.id, status: state}));

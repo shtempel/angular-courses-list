@@ -1,6 +1,6 @@
 <div [formGroup]="form" class="column">
 
-    <label for="titleId">Title:</label>
+    <label for="titleId">{{title}}:</label>
 
     <div class="error"
          *ngIf="form.controls['title'].hasError('required') && form.controls['title'].touched">

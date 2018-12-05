@@ -1,5 +1,5 @@
 import { faBackward } from '@fortawesome/free-solid-svg-icons';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import * as constants from '../../../constants/_const';
 
@@ -8,14 +8,8 @@ import * as constants from '../../../constants/_const';
     templateUrl: './not-found-page.component.html',
     styleUrls: ['./not-found-page.component.scss']
 })
-export class NotFoundPageComponent implements OnInit {
+export class NotFoundPageComponent {
     backBtn = constants.buttonsNames.BACK;
     title = constants.common.NOT_FOUND;
     arrowIcon = faBackward;
-
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
 }

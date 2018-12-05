@@ -3,9 +3,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { FormGroup } from '@angular/forms';
 
+
 import * as coursesActions from '../../../../../store/actions/courses';
 import { getAuthors } from '../../../../../store/reducers/courses';
 import * as authorsService from '../../../../services/authors';
+import * as assets from './../../../../../constants/_const';
 import { ICourseItem } from '../../../../models';
 
 @Component({
@@ -23,6 +25,8 @@ export class AuthorsInputComponent implements OnInit {
     styles = {
         icon: 'icon'
     };
+
+    authorsTitle = assets.common.AUTHORS;
 
     constructor(
         private authorsSer: authorsService.AuthorsService,

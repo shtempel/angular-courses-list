@@ -63,10 +63,10 @@ export class EditFormComponent implements OnInit {
                 {
                     id: this.courseId,
                     course: {
-                        name: formData.title,
+                        title: formData.title,
                         description: formData.description,
-                        length: formData.duration,
-                        date: formData.date,
+                        duration: formData.duration,
+                        releaseDate: formData.releaseDate,
                         authors: this.courseAuthors
                     }
                 }
@@ -97,7 +97,7 @@ export class EditFormComponent implements OnInit {
                     Validators.required,
                     Validators.pattern(/^[0-9]*$/) ]),
             ],
-            date: [ course.releaseDate, [ Validators.required ] ],
+            releaseDate: [ course.releaseDate, [ Validators.required ] ],
             authors: [ null ]
         });
     }

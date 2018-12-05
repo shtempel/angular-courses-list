@@ -28,7 +28,6 @@ export class CoursesListComponent implements OnInit {
             res => {
                 this.coursesStore.dispatch(new coursesActions.FetchCourses({limit: res}));
             });
-
         this.courses$ = this.coursesStore.pipe(select(getCourses));
     }
 }

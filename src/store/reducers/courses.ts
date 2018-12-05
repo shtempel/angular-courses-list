@@ -59,18 +59,9 @@ export function reducer(state = initialState, action: coursesActions.CoursesActi
         }
 
         case coursesActions.FETCH_COURSE_BY_ID_SUCCESS: {
-            action.payload = {
-                id: action.payload.id,
-                title: action.payload.name,
-                duration: action.payload.length,
-                releaseDate: moment(action.payload.date).format('YYYY-MM-DD'),
-                authors: action.payload.authors,
-                description: action.payload.description,
-                topRated: action.payload.isTopRated
-            };
             return {
                 ...state,
-                item: action.payload,
+                item: {...action.payload, releaseDate: moment(action.payload.releaseDate).format('YYYY-MM-DD')},
                 isFetching: false
             };
         }
@@ -89,7 +80,7 @@ export function reducer(state = initialState, action: coursesActions.CoursesActi
                 ...state,
                 item: {
                     ...state.item,
-                    authors: [ ...state.item.authors, action.payload ]
+                    authors: [...state.item.authors, action.payload]
                 }
             };
         }

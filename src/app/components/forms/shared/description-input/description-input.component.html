@@ -1,16 +1,16 @@
 <div [formGroup]="form" class="add-new-page__description column">
-  <label for="descriptionId">Description:</label>
+    <label for="descriptionId">{{description}}:</label>
 
-  <div class="error"
-       *ngIf="form.controls['description'].hasError('maxlength')
+    <div class="error"
+         *ngIf="form.controls['description'].hasError('maxlength')
   && form.controls['description'].touched">
-    {{errors.maxDescriptionLength}}
-  </div>
+        {{errors.maxDescriptionLength}}
+    </div>
 
-  <div class="error"
-       *ngIf="form.controls['description'].hasError('required') && form.controls['description'].touched">
-    "Description" {{errors.required}}
-  </div>
+    <div class="error"
+         *ngIf="form.controls['description'].hasError('required') && form.controls['description'].touched">
+        "Description" {{errors.required}}
+    </div>
 
-  <textarea id="descriptionId" formControlName="description" rows="5" wrap="soft"></textarea>
+    <textarea id="descriptionId" formControlName="description" rows="5" wrap="soft"></textarea>
 </div>

@@ -2,7 +2,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="login__header">{{assets.login}}
         </div>
-        <div class="login__error" *ngIf="wrongCredentials">Wrong credentials, try again</div>
+        <div class="login__error" *ngIf="wrongCredentials">{{assets.wrongCredentials}}</div>
         <div class="login__user-name column">
             <label for="login">{{assets.login}}</label>
             <input [ngClass]="{'wrong-cred': wrongCredentials}"

@@ -4,9 +4,9 @@ import { Location } from '@angular/common';
 import { select, Store } from '@ngrx/store';
 
 import * as coursesActions from '../../../../store/actions/courses';
+import { getAuthors } from '../../../../store/reducers/courses';
 import * as assets from '../../../../constants/_const';
 import { ICourseItem } from '../../../models';
-import { getAuthors } from '../../../../store/reducers/courses';
 
 @Component({
     selector: 'app-add-new-form',
@@ -50,10 +50,10 @@ export class AddNewFormComponent implements OnInit {
         if (formData) {
             this.coursesStore.dispatch(new coursesActions.FetchCourseAdd(
                 {
-                    name: formData.title,
+                    title: formData.title,
                     description: formData.description,
-                    length: formData.duration,
-                    date: formData.date,
+                    duration: formData.duration,
+                    releaseDate: formData.releaseDate,
                     authors: this.courseAuthors
                 }
             ));
@@ -83,7 +83,7 @@ export class AddNewFormComponent implements OnInit {
                     Validators.required,
                     Validators.pattern(/^[0-9]*$/)]),
             ],
-            date: [null, [Validators.required]],
+            releaseDate: [null, [Validators.required]],
             authors: [null]
         });
     }

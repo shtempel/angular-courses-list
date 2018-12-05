@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 export class CoursesService {
     private API_PATH = 'http://localhost:3004/courses';
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+    }
 
     getAllCourses(limit): Observable<any> {
         return this.http.get<any>(`${this.API_PATH}`, {
@@ -38,8 +39,8 @@ export class CoursesService {
         return this.http.put<any>(`${this.API_PATH}/${id}`, course);
     }
 
-    setTopRated(id: number, status: boolean): Observable<any> {
-        return this.http.put<any>(`${this.API_PATH}/${id}`,
-            {'isTopRated': status});
+    setTopRated(course): Observable<any> {
+        return this.http.put<any>(`${this.API_PATH}/${course.id}`,
+            {...course});
     }
 }

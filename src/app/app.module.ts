@@ -22,7 +22,6 @@ import * as utils from './../utils/index';
 import { ROUTES } from './app.routes';
 import { pipes } from './pipes';
 
-
 const declarations = [
     AppComponent,
     ...components,

@@ -14,6 +14,7 @@ export class LoginPageComponent implements OnInit {
     loginForm: FormGroup;
     wrongCredentials;
     assets = {
+        wrongCredentials: assets.common.WRONG_CREDENTIALS,
         passPlaceHolder: assets.common.PLEASE_ENTER_PASSWORD,
         loginPlaceHolder: assets.common.PLEASE_ENTER_LOGIN,
         pass: assets.common.PASSWORD,

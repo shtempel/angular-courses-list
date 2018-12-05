@@ -1,13 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+
 
 import * as appActions from './../../../store/actions/app';
-import { App } from '../../models';
 import { Router } from '@angular/router';
-
+import { App } from '../../models';
 
 @Injectable({
     providedIn: 'root'
@@ -34,8 +33,7 @@ export class AuthService {
                     localStorage.setItem(this.LOGIN_LS_KEY, user.token);
                     this.setIsLoggedIn(true);
                     return user.token;
-                },
-                catchError(error => Observable.throw(error.json()))
+                }
             ));
     }
 
