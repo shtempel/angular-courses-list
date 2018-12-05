@@ -10,7 +10,9 @@
     font-size: $x-large-font;
     padding: $padding-base;
   }
-
+  &__samples{
+    font-size: small;
+  }
   &__error {
     color: $_color-alizarin-crimson;
   }
