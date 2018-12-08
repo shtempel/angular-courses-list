@@ -1,0 +1,12 @@
+@import './../../../../../styles/variables';
+
+.duration {
+  width: 80%;
+
+  &__value {
+    span {
+      margin-left: $margin-base-horizontal;
+      align-self: center;
+    }
+  }
+}

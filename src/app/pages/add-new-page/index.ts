@@ -1,3 +1,3 @@
-import {AddNewPageComponent} from './add-new-page.component';
+import { AddNewPageComponent } from './add-new-page.component';
 
-export {AddNewPageComponent};
+export { AddNewPageComponent };

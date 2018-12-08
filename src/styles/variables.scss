@@ -3,6 +3,8 @@
 /* Padding */
 $padding-small:                         .4rem;
 $padding-base:                          .8rem;
+$padding-for-date:                      0 .4rem;
+$circle-padding:                        5px 10px;
 
 /*Logo size*/
 $logo_height:                           50px;
@@ -10,24 +12,29 @@ $logo_width:                            100px;
 
 /*Margin*/
 $margin-base-horizontal:                1.2rem;
+$margin-x-small-vertical:               0.5rem ;
 $margin-small-vertical:                 1rem;
 $margin-base-vertical:                  1.2rem;
 
 /*Fonts*/
-$cell-font-size:                        smaller;
+$x-large-font:                          x-large;
+$small-font:                            smaller;
+$normal-font:                           normal;
 
 /*Border*/
 $border-base:                           1px solid $color-border;
 $border-outer:                          2px solid $color-border;
 $border-radius-small:                   5px;
+$border-radius-circle:                  50%;
+$border-error:                          2px solid $_color-alizarin-crimson;
 
 /*Common*/
 $description-height-medium:             60px;
 $description-height-small:              20px;
-$duration-year-width:                   130px;
+$duration-year-width:                   150px;
 $container-height:                      600px;
 $body-max-width:                        1000px;
+$poster_height:                         500px;
 $header-height:                         50px;
 $footer-shadow:                         0 0 5px rgba(0, 0, 0, 0.5);
 $shadow:                                2px 5px 10px rgba(0, 0, 0, 0.5);
-

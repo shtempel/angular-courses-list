@@ -4,4 +4,11 @@
   height: $container-height;
   padding: $padding-base;
   overflow: auto;
+  &__empty-list {
+    padding: $padding-small;
+    border: $border-base;
+    text-align: center;
+  }
 }
+
+

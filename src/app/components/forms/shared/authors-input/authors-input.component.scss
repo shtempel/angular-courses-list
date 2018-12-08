@@ -1,0 +1,33 @@
+@import './../../../../../styles/variables';
+@import './../../../../../styles/colors';
+
+.authors {
+  margin-top: $margin-base-vertical;
+  flex-wrap: wrap;
+}
+
+.author-item {
+  margin: 2px;
+  border-radius: $border-radius-small;
+  background-color: $_color-Loblolly;
+  padding: $padding-small;
+}
+
+.author-item span {
+  margin-right: 5px;
+}
+
+.searched-authors {
+  border-radius: $border-radius-small;
+  margin-top: $margin-small-vertical;
+  padding: $padding-small;
+  border: $border-base;
+  max-height: 200px;
+  overflow: auto;
+  max-width: 30%;
+}
+
+.name-pallet {
+  margin-top: 10px;
+  padding: $padding-small;
+}

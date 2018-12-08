@@ -1,3 +1,3 @@
-import {EditCoursePageComponent} from './edit-course-page.component';
+import { EditCoursePageComponent } from './edit-course-page.component';
 
-export {EditCoursePageComponent};
+export { EditCoursePageComponent };

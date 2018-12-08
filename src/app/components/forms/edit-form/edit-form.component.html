@@ -1,0 +1,15 @@
+<form [formGroup]="editForm" (ngSubmit)="updateCourse( id, editForm.value)" *ngIf="editForm">
+    <div class="add-new-form column">
+        <app-title-input [form]="editForm" [errors]="errors"></app-title-input>
+        <app-description-input [form]="editForm" [errors]="errors"></app-description-input>
+        <app-date-input [form]="editForm" [errors]="errors"></app-date-input>
+        <app-duration-input [form]="editForm" [errors]="errors"></app-duration-input>
+        <app-authors-input [form]="editForm" [errors]="errors"></app-authors-input>
+        <div class="add-new-form__buttons">
+            <button class="btn" [ngClass]="{'disabled': !editForm.valid}" [disabled]="!editForm.valid">
+                {{assets.update}}
+            </button>
+            <button class="btn" routerLink="/courses" (click)="resetCurrentCourse()">{{assets.cancel}}</button>
+        </div>
+    </div>
+</form>

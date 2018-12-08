@@ -1,3 +1,3 @@
-import {ToolPanelComponent} from './tool-panel.component';
+import { ToolPanelComponent } from './tool-panel.component';
 
-export {ToolPanelComponent};
+export { ToolPanelComponent };

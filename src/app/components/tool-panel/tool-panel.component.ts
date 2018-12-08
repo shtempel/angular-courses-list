@@ -1,15 +1,18 @@
-import {faFileAlt, faSearch} from '@fortawesome/free-solid-svg-icons';
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { faFileAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
 
-import {buttonsNames, common} from '../../../constants/_const';
+import * as coursesActions from '../../../store/actions/courses';
+import { buttonsNames, common } from '../../../constants/_const';
+import * as models from '../../models';
 
 @Component({
     selector: 'app-tool-panel',
     templateUrl: './tool-panel.component.html',
     styleUrls: ['./tool-panel.component.scss']
 })
-export class ToolPanelComponent implements OnInit {
-    inputValue;
+export class ToolPanelComponent {
+    inputValue = ' ';
     @Output() click: EventEmitter<string> = new EventEmitter<string>();
     icons = {
         searchIcon: faSearch,
@@ -22,17 +25,13 @@ export class ToolPanelComponent implements OnInit {
         searchBtnTitle: buttonsNames.SEARCH
     };
 
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
+    constructor(private coursesStore: Store<models.ICourseItem>) { }
 
     onKeyUp(event: any) {
         this.inputValue = event.target.value;
     }
 
     onSearchClick() {
-        !this.inputValue ? console.log('You should type something in input first') : console.log(this.inputValue);
+        this.coursesStore.dispatch(new coursesActions.FetchCourseSearch(this.inputValue));
     }
 }

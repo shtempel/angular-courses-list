@@ -1,3 +1,7 @@
 export interface App {
-    isAuthorized: boolean;
+    app: {
+        isEditForm: boolean;
+        isAuthorized: boolean;
+        isRegOpen: boolean;
+    };
 }

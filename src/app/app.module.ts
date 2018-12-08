@@ -1,46 +1,55 @@
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import * as components from './components';
-import * as pages from './pages';
+import { components } from './components';
+import { effects } from './effects';
+import { pages } from './pages';
 
+import { AuthResolver } from './services/auth/auth.resolver';
+import { metaReducers, reducers } from '../store/reducers';
+import { AuthGuard } from './services/auth/auth.guards';
+import { directives } from './directives';
+import * as utils from './../utils/index';
 import { ROUTES } from './app.routes';
-import { reducers } from '../store';
+import { pipes } from './pipes';
+
+const declarations = [
+    AppComponent,
+    ...components,
+    ...directives,
+    ...pages,
+    ...pipes
+];
 
 @NgModule({
-    declarations: [
-        components.BreadcrumbsComponent,
-        components.CoursesListComponent,
-        components.CourseItemComponent,
-        components.ToolPanelComponent,
-        components.LoadMoreComponent,
-        components.HeaderComponent,
-        components.FooterComponent,
-        components.IconComponent,
-
-        pages.EditCoursePageComponent,
-        pages.NotFoundPageComponent,
-        pages.CoursesPageComponent,
-        pages.AddNewPageComponent,
-        pages.LoginPageComponent,
-
-        AppComponent
-    ],
+    declarations: [...declarations],
     imports: [
+        FormsModule,
         BrowserModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        EffectsModule.forRoot([...effects]),
         FontAwesomeModule,
         RouterModule.forRoot(ROUTES),
-        StoreModule.forRoot(reducers),
+        StoreModule.forRoot(reducers, {metaReducers}),
         StoreDevtoolsModule.instrument({
-            maxAge: 5
+            maxAge: 15
         }),
+        StoreRouterConnectingModule.forRoot({stateKey: 'router'})
     ],
-    providers: [],
+    providers: [
+        {provide: RouterStateSerializer, useClass: utils.routerStore.CustomSerializer},
+        AuthGuard, AuthResolver
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

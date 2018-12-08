@@ -15,6 +15,9 @@ body {
     flex-direction: row;
     display: flex;
   }
+  .container {
+    width: $body-max-width;
+  }
 }
 
 * {
@@ -32,26 +35,74 @@ body {
   display: flex;
 }
 
-.btn {
-  text-align: center;
-  cursor: pointer;
+button {
+  border-radius: $border-radius-small;
+  background-color: $_color-white;
 }
 
-.btn:hover {
+.btn, a {
+  border-radius: $border-radius-small;
+  text-decoration: none;
+  color: $_color-black;
+  text-align: center;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+.btn:hover,
+a:hover,
+button:hover {
   background-color: $_color-Gray;
   color: $_color-white;
   outline: none;
+
   .icon {
     color: $_color-white;
   }
 }
 
 .disabled {
-  border: none !important;
   pointer-events: none;
+  border: none !important;
   color: $_color-Gray;
 }
 
 .icon {
   color: $_color-Gray;
+}
+
+.fav-icon {
+  margin-left: $margin-base-horizontal;
+  color: $_color-Loblolly;
+}
+
+.fav-icon-rated,
+.fav-icon:hover,
+.icon:hover {
+  color: $_color-black;
+}
+
+.error {
+  color: $_color-alizarin-crimson;
+}
+
+.btn, a, label,
+.fav-icon-rated,
+.fav-icon:hover, .icon {
+  cursor: pointer;
+}
+
+input, textarea {
+  border-radius: $border-radius-small;
+  padding: $padding-small;
+  border: $border-base;
+  resize: none;
+}
+
+select.ng-invalid.ng-touched,
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: $border-error;
 }

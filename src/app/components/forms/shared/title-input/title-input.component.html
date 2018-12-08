@@ -1,0 +1,22 @@
+<div [formGroup]="form" class="column">
+
+    <label for="titleId">{{title}}:</label>
+
+    <div class="error"
+         *ngIf="form.controls['title'].hasError('required') && form.controls['title'].touched">
+        "Title" {{errors.required}}
+    </div>
+
+    <div class="error"
+         *ngIf="form.controls['title'].hasError('maxlength') && form.controls['title'].touched">
+        {{errors.maxNameLength}}
+    </div>
+
+    <div class="error"
+         *ngIf="form.controls['title'].hasError('minlength') && form.controls['title'].touched">
+        {{errors.minNameLength}}
+    </div>
+
+    <input id="titleId" formControlName="title"/>
+
+</div>

@@ -1,7 +1,15 @@
 export interface ICourseItem {
-    id: number;
-    date: String;
-    name: String;
+    description: string;
+    releaseDate: string;
+    topRated: boolean;
+    authors: IAuthor[];
     duration: number;
-    description: String;
+    title: string;
+    id: number;
+}
+
+export interface IAuthor {
+    firstName: string;
+    id: number;
+    lastName: string;
 }

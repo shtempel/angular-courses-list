@@ -1,0 +1,24 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/colors';
+
+.add-new-form {
+  padding: $padding-base;
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: $margin-base-vertical;
+
+    button {
+      border-radius: $padding-small;
+      padding: $padding-small;
+      border: $border-outer;
+      width: 6rem;
+    }
+
+    button:first-child {
+      margin-right: $margin-base-horizontal;
+    }
+  }
+
+}

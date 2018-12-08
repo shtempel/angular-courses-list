@@ -1,0 +1,59 @@
+@import './../../../styles/variables';
+@import './../../../styles/colors';
+
+.login {
+  margin-bottom: $margin-base-vertical;
+  padding: $padding-base;
+  align-items: center;
+
+  &__header {
+    font-size: $x-large-font;
+    padding: $padding-base;
+  }
+  &__samples{
+    font-size: small;
+  }
+  &__error {
+    color: $_color-alizarin-crimson;
+  }
+
+  &__user-name,
+  &__user-pass {
+    margin-top: $margin-base-vertical;
+    width: 80%;
+
+    label {
+      margin-bottom: $margin-x-small-vertical;
+      cursor: pointer;
+    }
+
+    input {
+      border-radius: $border-radius-small;
+      padding: $padding-small;
+      border: $border-base;
+    }
+  }
+
+  &__submit {
+    margin-bottom: $margin-base-vertical;
+    border-radius: $border-radius-small;
+    margin-top: $margin-base-vertical;
+    padding: $padding-base;
+    border: $border-base;
+    width: 80%;
+  }
+
+  &__reg {
+    cursor: pointer;
+  }
+}
+
+.wrong-cred {
+  border: $border-error !important;
+}
+
+select.ng-invalid.ng-touched,
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: $border-error;
+}
