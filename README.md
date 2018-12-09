@@ -5,8 +5,6 @@ To start:
 2. Run npm start from parent folder
 
 Users credentials: 
- "login": "Warner",
- "password": "ea"
     
  "login": "Morales",
  "password": "id"
